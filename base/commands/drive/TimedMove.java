@@ -1,24 +1,18 @@
 package edu.wpi.first.wpilibj.base.commands.drive;
 
-import edu.wpi.first.wpilibj.base.commands.CommandBase;
+import edu.wpi.first.wpilibj.superclasses.CommandBaseRedCrusade;
 
 /**
  * @author Sean Zammit
  */
-public class TimedMove extends CommandBase {
+public class TimedMove extends CommandBaseRedCrusade {
     
     double speed;
-    CommandBase command;
     
-    public TimedMove(double time, double sp, CommandBase com) {
-        requires(driver);
+    public TimedMove(int requiredSystem, double time, double sp, CommandBaseRedCrusade com) {
+        super(requiredSystem);
         setTimeout(time);
         speed = sp;
-        command = com;
-    }
-
-    // Called just before this Command runs the first time
-    protected void initialize() {
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -32,18 +26,5 @@ public class TimedMove extends CommandBase {
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
         return isTimedOut(); 
-    }
-
-    // Called once after isFinished returns true
-    protected void end() {
-        if(command != null)
-        {
-            command.start();
-        }
-    }
-
-    // Called when another command which requires one or more of the same
-    // subsystems is scheduled to run
-    protected void interrupted() {
     }
 }
