@@ -4,7 +4,7 @@ import edu.wpi.first.wpilibj.superclasses.CommandRC;
 
 /**
  *
- * @author Author
+ * @author Sean Zammit
  */
 public class Autonomous extends CommandRC {
 
@@ -18,7 +18,7 @@ public class Autonomous extends CommandRC {
 
     //Determine the conditions that will stop this command.
     protected boolean isFinished() {
-        return false;
+        return true;
     }
     
     protected void end() {

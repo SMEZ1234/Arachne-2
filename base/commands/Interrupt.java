@@ -1,18 +1,15 @@
 package edu.wpi.first.wpilibj.base.commands;
 
+import edu.wpi.first.wpilibj.superclasses.CommandRC;
+
 /**
  *
  * @author Sean Zammit
  */
-public class Interrupt extends CommandBase {
+public class Interrupt extends CommandRC {
     
     public Interrupt() {
-        // Use requires() here to declare subsystem dependencies
-        // eg. requires(chassis);
-    }
-
-    // Called just before this Command runs the first time
-    protected void initialize() {
+        super(-1);
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -30,10 +27,5 @@ public class Interrupt extends CommandBase {
         for(int a = 0; a < subsystemList.length; a++) {
             subsystemList[a].getCurrentCommand().cancel();
         }
-    }
-
-    // Called when another command which requires one or more of the same
-    // subsystems is scheduled to run
-    protected void interrupted() {
     }
 }

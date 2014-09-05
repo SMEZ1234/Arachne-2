@@ -5,13 +5,14 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package edu.wpi.first.wpilibj.templates;
+package edu.wpi.first.wpilibj.base;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.base.commands.CommandBase;
+import edu.wpi.first.wpilibj.base.commands.Interrupt;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -29,42 +30,40 @@ public class Main extends IterativeRobot {
      * used for any initialization code.
      */
     public void robotInit() {
-        // Initialize all subsystems
+        //This initializes all subsystems
         CommandBase.init();
 
-        // instantiate the command used for the autonomous period
+        //This sets the command used to begin the autonomous sequence
         autonomousCommand = CommandBase.autonomous;
     }
 
     public void autonomousInit() {
-        // schedule the autonomous command (example)
+        //This starts the autonomous sequence.
         autonomousCommand.start();
     }
 
     /**
-     * This function is called periodically during autonomous
+     * This function is called periodically during autonomous.
      */
     public void autonomousPeriodic() {
         Scheduler.getInstance().run();
     }
 
     public void teleopInit() {
-	// This makes sure that the autonomous stops running when
-        // teleop starts running. If you want the autonomous to 
-        // continue until interrupted by another command, remove
-        // this line or comment it out.
-        autonomousCommand.cancel();
+	//This SHOULD stop the autonomous sequence.
+        //Currently untested.
+        new Interrupt().start();
     }
 
     /**
-     * This function is called periodically during operator control
+     * This function is called periodically during operator control.
      */
     public void teleopPeriodic() {
         Scheduler.getInstance().run();
     }
     
     /**
-     * This function is called periodically during test mode
+     * This function is called periodically during test mode.
      */
     public void testPeriodic() {
         LiveWindow.run();
