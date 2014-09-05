@@ -7,13 +7,13 @@ import edu.wpi.first.wpilibj.base.subsystems.Driver;
 import edu.wpi.first.wpilibj.base.subsystems.SubsystemRC;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import edu.wpi.first.wpilibj.superclasses.CommandBaseRedCrusade;
+import edu.wpi.first.wpilibj.superclasses.CommandRC;
 import edu.wpi.first.wpilibj.superclasses.SubsystemBase;
 
 /**
  * DO NOT EXTEND THIS CLASS.
- * Use CommandBaseRedCrusade instead.
- * 
+ * Use CommandRC instead.
+ *
  * CommandBase creates and stores each subsystem. 
  * To access a subsystem elsewhere in your code in your code use either:
  *     CommandBase.SUBSYSTEM or
@@ -70,7 +70,7 @@ public abstract class CommandBase extends Command {
     /*
      * Handles necessary procedures when creating a new subsystem.
      */
-    private static SubsystemBase setupNewSubsystem(SubsystemBase subsystem, CommandBaseRedCrusade command) {
+    private static SubsystemBase setupNewSubsystem(SubsystemBase subsystem, CommandRC command) {
         subsystem.setDefCommand(command);
         return subsystemList[subsystem.systemID];
     }

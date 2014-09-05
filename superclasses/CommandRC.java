@@ -4,35 +4,35 @@ import edu.wpi.first.wpilibj.base.commands.CommandBase;
 
 /**
  * Creates a standard setup for all commands.
- * All atomic should subclass CommandBaseRedCrusade.
+ * All commands should subclass CommandRC.
  * 
  * @author Sean Zammit
  */
-public abstract class CommandBaseRedCrusade extends CommandBase {
+public abstract class CommandRC extends CommandBase {
 
     //Command to run when this command is started
-    public CommandBaseRedCrusade command;
+    public CommandRC command;
     
     //Command to run when this command is finished
-    public CommandBaseRedCrusade commandStart;
+    public CommandRC commandStart;
     
     public boolean isStartCommandComplete = true;
     
-    public CommandBaseRedCrusade(int requiredSystem) {
+    public CommandRC(int requiredSystem) {
         super();
         if(requiredSystem != -1) {
             requires(subsystemList[requiredSystem]);
         }
     }
     
-    public CommandBaseRedCrusade(int requiredSystem, CommandBaseRedCrusade comOnExit, CommandBaseRedCrusade comOnStart) {
+    public CommandRC(int requiredSystem, CommandRC comOnExit, CommandRC comOnStart) {
         this(requiredSystem);
         command = comOnExit;
         commandStart = comOnStart;
         isStartCommandComplete = false;
     }
 
-    public CommandBaseRedCrusade(int requiredSystem, CommandBaseRedCrusade comOnExit) {
+    public CommandRC(int requiredSystem, CommandRC comOnExit) {
         this(requiredSystem);
         command = comOnExit;
     }

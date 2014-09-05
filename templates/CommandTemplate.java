@@ -1,13 +1,13 @@
 package edu.wpi.first.wpilibj.templates;
 
 import edu.wpi.first.wpilibj.base.RobotMap;
-import edu.wpi.first.wpilibj.superclasses.CommandBaseRedCrusade;
+import edu.wpi.first.wpilibj.superclasses.CommandRC;
 
 /**
  *
  * @author Author
  */
-public class CommandTemplate extends CommandBaseRedCrusade {
+public class CommandTemplate extends CommandRC {
 
     public CommandTemplate(int requiredSystem) {
         super(requiredSystem);

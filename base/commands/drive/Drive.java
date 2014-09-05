@@ -2,13 +2,13 @@ package edu.wpi.first.wpilibj.base.commands.drive;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.base.OI;
-import edu.wpi.first.wpilibj.superclasses.CommandBaseRedCrusade;
+import edu.wpi.first.wpilibj.superclasses.CommandRC;
 
 /**
  *
  * @author Developer
  */
-public class Drive extends CommandBaseRedCrusade {
+public class Drive extends CommandRC {
     
     public Drive(int requiredSystem) {
         super(requiredSystem);

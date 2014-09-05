@@ -22,7 +22,7 @@ public class SubsystemBase extends Subsystem {
     public void onInit() {
     }
     
-    public void setDefCommand(CommandBaseRedCrusade command) {
+    public void setDefCommand(CommandRC command) {
         setDefaultCommand(command);
     }
 }

@@ -1,14 +1,14 @@
 package edu.wpi.first.wpilibj.base.commands.autonomous;
 
-import edu.wpi.first.wpilibj.superclasses.CommandBaseRedCrusade;
+import edu.wpi.first.wpilibj.superclasses.CommandRC;
 
 /**
  *
  * @author Author
  */
-public class Autonomous extends CommandBaseRedCrusade {
+public class Autonomous extends CommandRC {
 
-    public Autonomous(CommandBaseRedCrusade com) {
+    public Autonomous(CommandRC com) {
         super(-1, com);
     }
     

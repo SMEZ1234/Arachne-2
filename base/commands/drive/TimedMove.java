@@ -1,15 +1,15 @@
 package edu.wpi.first.wpilibj.base.commands.drive;
 
-import edu.wpi.first.wpilibj.superclasses.CommandBaseRedCrusade;
+import edu.wpi.first.wpilibj.superclasses.CommandRC;
 
 /**
  * @author Sean Zammit
  */
-public class TimedMove extends CommandBaseRedCrusade {
+public class TimedMove extends CommandRC {
     
     double speed;
     
-    public TimedMove(int requiredSystem, double time, double sp, CommandBaseRedCrusade com) {
+    public TimedMove(int requiredSystem, double time, double sp, CommandRC com) {
         super(requiredSystem);
         setTimeout(time);
         speed = sp;
