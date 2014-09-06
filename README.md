@@ -1,3 +1,3 @@
 RobotCodeTemplate
 =================
-The base that we build each year's code off.
+The Red Crusade's base for building each year's code.
