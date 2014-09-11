@@ -51,7 +51,7 @@ public class Main extends IterativeRobot {
 
     public void teleopInit() {
 	//This SHOULD stop the autonomous sequence.
-        //Currently untested.
+        //TODO Currently untested.
         new Interrupt().start();
     }
 
