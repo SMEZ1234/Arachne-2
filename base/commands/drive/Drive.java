@@ -6,7 +6,7 @@ import edu.wpi.first.wpilibj.superclasses.CommandRC;
 
 /**
  *
- * @author Developer
+ * @author Sean Zammit
  */
 public class Drive extends CommandRC {
     
