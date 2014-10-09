@@ -29,7 +29,8 @@ public abstract class CommandBase extends Command {
     
     //Create an instance of each subsystem here.
     //Just as a note, this method of subsystem setup is quite experimental, so be wary of bugs.
-    public static Driver driver = (Driver) setupNewSubsystem(new Driver(0), new Drive(0));
+    public static SubsystemRC sensors = (SubsystemRC) setupNewSubsystem(new SubsystemRC(0), new ReadSensors(0));
+    public static Driver driver = (Driver) setupNewSubsystem(new Driver(1), new Drive(1));
     
     public static Autonomous autonomous;
     

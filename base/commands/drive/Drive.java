@@ -2,6 +2,7 @@ package edu.wpi.first.wpilibj.base.commands.drive;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.base.OI;
+import edu.wpi.first.wpilibj.base.subsystems.SubsystemRC;
 import edu.wpi.first.wpilibj.superclasses.CommandRC;
 
 /**
