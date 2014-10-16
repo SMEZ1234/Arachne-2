@@ -6,12 +6,12 @@ import edu.wpi.first.wpilibj.base.RobotMap;
 /**
  * @author Author
  */
-public class Driver extends SubsystemRC {
+public class SubsystemDriver extends SubsystemRC {
     //Set up motors here. Make sure to use the RobotMap.
     public RobotDrive driveFront = new RobotDrive(RobotMap.driveMotorFL, RobotMap.driveMotorFR);
     public RobotDrive driveRear = new RobotDrive(RobotMap.driveMotorRL, RobotMap.driveMotorRR);
         
-    public Driver(int id) {
+    public SubsystemDriver(int id) {
         super(id);
     }
     

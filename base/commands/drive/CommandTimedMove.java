@@ -5,11 +5,11 @@ import edu.wpi.first.wpilibj.superclasses.CommandRC;
 /**
  * @author Sean Zammit
  */
-public class TimedMove extends CommandRC {
+public class CommandTimedMove extends CommandRC {
     
     double speed;
     
-    public TimedMove(int requiredSystem, double time, double sp, CommandRC com) {
+    public CommandTimedMove(int requiredSystem, double time, double sp, CommandRC com) {
         super(requiredSystem);
         setTimeout(time);
         speed = sp;

@@ -8,11 +8,11 @@
 package edu.wpi.first.wpilibj.base;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
+import edu.wpi.first.wpilibj.base.commands.CommandBase;
+import edu.wpi.first.wpilibj.base.commands.CommandInterrupt;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
-import edu.wpi.first.wpilibj.base.commands.CommandBase;
-import edu.wpi.first.wpilibj.base.commands.Interrupt;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -52,7 +52,7 @@ public class Main extends IterativeRobot {
     public void teleopInit() {
 	//This SHOULD stop the autonomous sequence.
         //TODO Currently untested.
-        new Interrupt().start();
+        new CommandInterrupt().start();
     }
 
     /**

@@ -9,9 +9,9 @@ import edu.wpi.first.wpilibj.superclasses.CommandRC;
  *
  * @author Sean Zammit
  */
-public class Drive extends CommandRC {
+public class CommandDrive extends CommandRC {
     
-    public Drive(int requiredSystem) {
+    public CommandDrive(int requiredSystem) {
         super(requiredSystem);
     }
 

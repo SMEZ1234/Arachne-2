@@ -2,8 +2,8 @@ package edu.wpi.first.wpilibj.base.commands;
 
 import edu.wpi.first.wpilibj.base.OI;
 import edu.wpi.first.wpilibj.base.commands.autonomous.Autonomous;
-import edu.wpi.first.wpilibj.base.commands.drive.Drive;
-import edu.wpi.first.wpilibj.base.subsystems.Driver;
+import edu.wpi.first.wpilibj.base.commands.drive.CommandDrive;
+import edu.wpi.first.wpilibj.base.subsystems.SubsystemDriver;
 import edu.wpi.first.wpilibj.base.subsystems.SubsystemRC;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -29,8 +29,8 @@ public abstract class CommandBase extends Command {
     
     //Create an instance of each subsystem here.
     //Just as a note, this method of subsystem setup is quite experimental, so be wary of bugs.
-    public static SubsystemRC sensors = (SubsystemRC) setupNewSubsystem(new SubsystemRC(0), new ReadSensors(0));
-    public static Driver driver = (Driver) setupNewSubsystem(new Driver(1), new Drive(1));
+    public static SubsystemRC sensors = (SubsystemRC) setupNewSubsystem(new SubsystemRC(0), new CommandReadSensors(0));
+    public static SubsystemDriver driver = (SubsystemDriver) setupNewSubsystem(new SubsystemDriver(1), new CommandDrive(1));
     
     public static Autonomous autonomous;
     

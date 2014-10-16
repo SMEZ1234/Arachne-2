@@ -6,11 +6,10 @@ import edu.wpi.first.wpilibj.superclasses.CommandRC;
  *
  * @author Sean Zammit
  */
-public class Wait extends CommandRC {
+public class CommandInterrupt extends CommandRC {
     
-    public Wait(CommandRC commandOnExit, double timeout) {
-        super(-1, commandOnExit);
-        setTimeout(timeout);
+    public CommandInterrupt() {
+        super(-1);
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -19,6 +18,14 @@ public class Wait extends CommandRC {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return isTimedOut();
+        return true;
+    }
+
+    // Called once after isFinished returns true
+    protected void end() {
+        //Hasn't been tested.
+        for(int a = 0; a < subsystemList.length; a++) {
+            subsystemList[a].getCurrentCommand().cancel();
+        }
     }
 }

@@ -1,27 +1,24 @@
 package edu.wpi.first.wpilibj.base.commands;
 
-import edu.wpi.first.wpilibj.Joystick;
-import edu.wpi.first.wpilibj.base.OI;
-import edu.wpi.first.wpilibj.base.subsystems.SubsystemRC;
 import edu.wpi.first.wpilibj.superclasses.CommandRC;
 
 /**
  *
  * @author Sean Zammit
  */
-public class ReadSensors extends CommandRC {
+public class CommandWait extends CommandRC {
     
-    public ReadSensors(int requiredSystem) {
-        super(requiredSystem);
+    public CommandWait(CommandRC commandOnExit, double timeout) {
+        super(-1, commandOnExit);
+        setTimeout(timeout);
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-        //Put any code here needed to handle readings from sensors.
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return false;
+        return isTimedOut();
     }
 }
