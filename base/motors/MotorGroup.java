@@ -9,7 +9,7 @@ import edu.wpi.first.wpilibj.helpers.ArrayHelper;
  */
 public class MotorGroup { 
     
-    public SafePWM[] motors = new SafePWM[0];
+    public SpeedController[] motors = new SpeedController[0];
     public float speed = 0;
     public float position = 0;
     public boolean requiresUpdate = false;
@@ -21,7 +21,7 @@ public class MotorGroup {
     }
     
     public MotorGroup addMotor(SafePWM motor) {
-        motors = (SafePWM[]) ArrayHelper.combineLists(motors, motor);        
+        motors = (SpeedController[]) ArrayHelper.combineLists(motors, motor);        
         return this;
     }
     
