@@ -29,8 +29,9 @@ public abstract class CommandBase extends Command {
     
     //Create an instance of each subsystem here.
     //Just as a note, this method of subsystem setup is quite experimental, so be wary of bugs.
-    public static SubsystemRC sensors = (SubsystemRC) setupNewSubsystem(new SubsystemRC(0), new CommandReadSensors(0));
-    public static SubsystemDriver driver = (SubsystemDriver) setupNewSubsystem(new SubsystemDriver(1), new CommandDrive(1));
+    private static int id = 0;
+    public static SubsystemRC sensors = (SubsystemRC) setupNewSubsystem(new SubsystemRC(id), new CommandReadSensors(id));
+    public static SubsystemDriver driver = (SubsystemDriver) setupNewSubsystem(new SubsystemDriver(id), new CommandDrive(id));
     
     public static Autonomous autonomous;
     
@@ -73,6 +74,7 @@ public abstract class CommandBase extends Command {
      */
     private static SubsystemBase setupNewSubsystem(SubsystemBase subsystem, CommandRC command) {
         subsystem.setDefCommand(command);
+        id++;
         return subsystemList[subsystem.systemID];
     }
 }
