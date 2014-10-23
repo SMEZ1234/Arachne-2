@@ -18,25 +18,28 @@ public class CommandDrive extends CommandRC {
     Joystick primaryStick = OI.stickDriver;
     double stickX;
     double stickY;
-    double valueZ;
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-        stickX = primaryStick.getX();
-        stickY = primaryStick.getY();
-        
-        if(OI.trigger.get()) {
-            stickY /= 2;
+        if(OI.pivotSwitch.get()) {
+            driver.driveFront.arcadeDrive(0, primaryStick.getTwist());
+            driver.driveRear.arcadeDrive(0, primaryStick.getTwist());
         }
-        stickX *= Math.abs(stickX);        
+        else {
+            stickX = primaryStick.getX();
+            stickY = primaryStick.getY();
         
-        valueZ = primaryStick.getZ();
+            if(OI.trigger.get()) {
+                stickY /= 2;
+            }
+            stickX *= Math.abs(stickX);
         
-        double speed = -stickY;
-        double rotation = -stickX;
+            double speed = -stickY;
+            double rotation = -stickX;
                 
-        driver.driveFront.arcadeDrive(speed, rotation);
-        driver.driveRear.arcadeDrive(speed, rotation);
+            driver.driveFront.arcadeDrive(speed, rotation);
+            driver.driveRear.arcadeDrive(speed, rotation);
+        }
     }
 
     // Make this return true when this Command no longer needs to run execute()

@@ -14,6 +14,7 @@ public class OI {
     
     public static final Joystick stickDriver = new Joystick(2);
     public static final Button trigger = new JoystickButton(stickDriver, 1);
+    public static final Button pivotSwitch = new JoystickButton(stickDriver, 7);
         
     public OI() {
         //Set what commands will run when buttons are pressed/held/released here.
