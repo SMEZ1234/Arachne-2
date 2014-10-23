@@ -21,11 +21,13 @@ public class CommandDrive extends CommandRC {
 
     //Set up what the robot will do while this command is running.
     protected void execute() {
-        if(OI.pivotSwitch.get()) {
-            driver.driveFront.arcadeDrive(0, primaryStick.getTwist());
-            driver.driveRear.arcadeDrive(0, primaryStick.getTwist());
+        /*if(OI.pivotSwitch.get()) {
+            double rotation = primaryStick.getTwist() * 2 - 1;
+            driver.driveFront.arcadeDrive(0, rotation);
+            driver.driveRear.arcadeDrive(0, rotation);
+            System.out.println("Z rotation: " + primaryStick.getTwist() + ", Output: " + rotation);
         }
-        else {
+        else*/ {
             stickX = primaryStick.getX();
             stickY = primaryStick.getY();
         
