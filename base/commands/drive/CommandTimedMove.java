@@ -15,7 +15,7 @@ public class CommandTimedMove extends CommandRC {
         speed = sp;
     }
 
-    // Called repeatedly when this Command is scheduled to run
+    //Set up what the robot will do while this command is running.
     protected void execute() {        
         double rotation = 0;
                 
@@ -23,7 +23,7 @@ public class CommandTimedMove extends CommandRC {
         driver.driveRear.arcadeDrive(speed, rotation);
     }
 
-    // Make this return true when this Command no longer needs to run execute()
+    //Determine the conditions that will stop this command.
     protected boolean isFinished() {
         return isTimedOut(); 
     }

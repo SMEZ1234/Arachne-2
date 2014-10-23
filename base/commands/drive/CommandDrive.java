@@ -19,7 +19,7 @@ public class CommandDrive extends CommandRC {
     double stickX;
     double stickY;
 
-    // Called repeatedly when this Command is scheduled to run
+    //Set up what the robot will do while this command is running.
     protected void execute() {
         if(OI.pivotSwitch.get()) {
             driver.driveFront.arcadeDrive(0, primaryStick.getTwist());
@@ -42,7 +42,7 @@ public class CommandDrive extends CommandRC {
         }
     }
 
-    // Make this return true when this Command no longer needs to run execute()
+    //Determine the conditions that will stop this command.
     protected boolean isFinished() {
         return false;
     }

@@ -12,16 +12,16 @@ public class CommandInterrupt extends CommandRC {
         super(-1);
     }
 
-    // Called repeatedly when this Command is scheduled to run
+    //Set up what the robot will do while this command is running.
     protected void execute() {
     }
 
-    // Make this return true when this Command no longer needs to run execute()
+    //Determine the conditions that will stop this command.
     protected boolean isFinished() {
         return true;
     }
 
-    // Called once after isFinished returns true
+    //Called once after the command is finished.
     protected void end() {
         //Hasn't been tested.
         for(int a = 0; a < subsystemList.length; a++) {

@@ -15,12 +15,12 @@ public class CommandReadSensors extends CommandRC {
         super(requiredSystem);
     }
 
-    // Called repeatedly when this Command is scheduled to run
+    //Set up what the robot will do while this command is running.
     protected void execute() {
         //Put any code here needed to handle readings from sensors.
     }
 
-    // Make this return true when this Command no longer needs to run execute()
+    //Determine the conditions that will stop this command.
     protected boolean isFinished() {
         return false;
     }
