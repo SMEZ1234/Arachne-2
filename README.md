@@ -1,3 +1,8 @@
-Robot Code Template
+4613 Base Code
 =================
-The Red Crusade's base for building each year's code.
+The Redbacks' base code that we build on during the season.
+
+RELEASE VERSION: Arachne 1.0
+
+Arachne Details:
+Action-reliant, assistive code to help novice engineers.
