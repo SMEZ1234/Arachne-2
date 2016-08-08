@@ -1,0 +1,11 @@
+Parent start:				initialise
+Parent run:					execute
+Parent finish:				end
+Parent should be finished:	isFinished
+
+start:				onStart
+run:				onRun
+finish:				onFinish
+should be finished: isDone
+
+cancel:	interrupt
