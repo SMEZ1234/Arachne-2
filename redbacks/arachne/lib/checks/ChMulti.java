@@ -1,5 +1,7 @@
 package redbacks.arachne.lib.checks;
 
+import redbacks.arachne.core.CommandBase;
+import redbacks.arachne.lib.actions.Action;
 import redbacks.arachne.lib.checks.digital.ChBoolean;
 import redbacks.arachne.lib.logic.ListLogic;
 
@@ -28,6 +30,19 @@ public class ChMulti extends Check
 	
 	public void onStart() {
 		operator.populateWorkingList(checklist);
+	}
+	
+	public void initialise(CommandBase command, Action action) {
+		super.initialise(command, action);
+		for(Check check : checklist) check.initialise(command, action);
+	}
+	
+	public void onRun() {
+		for(Check check : checklist) check.onRun();
+	}
+	
+	public void onFinish() {
+		for(Check check : checklist) check.onFinish();
 	}
 
 	protected boolean isDone() {
