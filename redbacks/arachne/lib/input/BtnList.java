@@ -23,12 +23,12 @@ public class BtnList extends Button
 	protected BtnList(ListLogic operator, Button... buttons) {
 		this.operator = operator;
 		buttonList = buttons;
-		this.operator.populateWorkingList(ButtonWrapper.wrapList(buttonList));
+		this.operator.populateWorkingList(ButtonGettableWrapper.wrapList(buttonList));
 	}
 
 	public boolean get() {
 		if(operator.get()) {
-			operator.populateWorkingList(ButtonWrapper.wrapList(buttonList));
+			operator.populateWorkingList(ButtonGettableWrapper.wrapList(buttonList));
 			return true;
 		}
 		return false;
