@@ -20,11 +20,11 @@ public class CommandList
 		doNothing = newCom(new AcDoNothing());
 
 	//Example subsystem
-	//static SwitchSubsystem s_exampleSubsystem = new SwitchSubsystem(exampleSubsystem);
-	//public static CommandSetup exampleCommand = newCom(new ActionExample(), new ActionExample());
+	//static {subsystemToUse = exampleSubsystem;}
+	//public static CommandSetup exampleCommand = newCom(new AcExample(), new AcExample());
 			
 	//Sequences
-	static SwitchSubsystem s_sequencer = new SwitchSubsystem(sequencer);
+	static {subsystemToUse = sequencer;}
 	//public static CommandSetup
 	//	sequenceExample = newCom(
 	//			new AcSeq.Sequential(exampleCommandA),
@@ -51,12 +51,5 @@ public class CommandList
 	 */
 	public static CommandSetup newCom(SubsystemBase subsystem, Action... actions) {
 		return new CommandSetup(subsystem, actions);
-	}
-	
-	public static class SwitchSubsystem
-	{
-		public SwitchSubsystem(SubsystemBase subsystem) {
-			subsystemToUse = subsystem;
-		}
 	}
 }

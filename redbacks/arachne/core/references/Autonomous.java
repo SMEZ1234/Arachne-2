@@ -17,12 +17,12 @@ public class Autonomous
 	 */
 	public static CommandBase getAutonomous(int autoNumber) {
 		switch(autoNumber) {
-			//Example autonomous
-			//case(1): return createAuto(
-			//				new ActionExample(),
-			//				new ActionExample(),
-			//				new ActionExample());
-			default: return doNothing.c();
+		//Example autonomous
+		//case(1): return createAuto(
+		//				new ActionExample(),
+		//				new ActionExample(),
+		//				new ActionExample());
+		default: return doNothing.c();
 		}
 	}
 	
