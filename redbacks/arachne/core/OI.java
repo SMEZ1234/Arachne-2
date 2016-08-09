@@ -1,6 +1,5 @@
 package redbacks.arachne.core;
 
-import redbacks.arachne.core.references.Autonomous;
 import edu.wpi.first.wpilibj.buttons.*;
 
 /**
@@ -14,8 +13,6 @@ public class OI
 	 * Inputs are mapped to functions inside this constructor.
 	 */
 	public OI() {
-		Autonomous.initAutonomous();
-		
 		//Set what commands will run when buttons are pressed/held/released here.
 	}
 

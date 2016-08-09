@@ -6,11 +6,11 @@ import redbacks.arachne.lib.checks.digital.ChBoolean;
 /**
  * @author Sean Zammit
  */
-public class ActionStartTimer extends Action
+public class AcStartTimer extends Action
 {
 	Timer timer;
 	
-	public ActionStartTimer(Timer timer) {
+	public AcStartTimer(Timer timer) {
 		super(new ChBoolean(true));
 		this.timer = timer;
 	}

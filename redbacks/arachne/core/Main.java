@@ -26,11 +26,11 @@ public class Main extends IterativeRobot
 		isAuto = true;
 		
 		//This sets the command used to begin the autonomous sequence
-		int av = (int) SmartDashboard.getNumber("Autonomous Version", 3);//REVERT Auto
+		int av = (int) SmartDashboard.getNumber("Autonomous Version", 0);
 		SmartDashboard.putNumber("Autonomous Version", av);
 
 		//This starts the autonomous sequence.
-		Autonomous.autonomous[av].start();
+		Autonomous.getAutonomous(av).start();
 	}
 
 	/**
@@ -41,6 +41,7 @@ public class Main extends IterativeRobot
 	}
 
 	public void teleopInit() {
+		Scheduler.getInstance().removeAll();
 		isAuto = false;
 	}
 

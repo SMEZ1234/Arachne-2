@@ -12,22 +12,18 @@ import redbacks.arachne.lib.commands.CommandSetup;
  */
 public class Autonomous
 {
-	/** The list of autonomous functions. */
-	public static CommandBase[] autonomous = new CommandBase[2];
-	
 	/**
-	 * Called by OI. Set the sequence of actions run in autonomous here.
+	 * Set the sequence of actions run in autonomous here.
 	 */
-	public static void initAutonomous() {
-		//Do nothing
-		autonomous[0] = doNothing.c();
-		
-		//Example secondary autonomous
-		//autonomous[1] = createAuto(
-		//		new ActionExample(),
-		//		new ActionExample(),
-		//		new ActionExample()
-		//);
+	public static CommandBase getAutonomous(int autoNumber) {
+		switch(autoNumber) {
+			//Example autonomous
+			//case(1): return createAuto(
+			//				new ActionExample(),
+			//				new ActionExample(),
+			//				new ActionExample());
+			default: return doNothing.c();
+		}
 	}
 	
 	public static CommandBase createAuto(Action... actions) {
