@@ -3,7 +3,7 @@ package redbacks.arachne.lib.actions.actuators;
 import edu.wpi.first.wpilibj.Relay;
 import edu.wpi.first.wpilibj.Relay.Value;
 import redbacks.arachne.lib.actions.Action;
-import redbacks.arachne.lib.checks.digital.ChBoolean;
+import redbacks.arachne.lib.checks.ChTrue;
 
 /**
  * Action class used to set the value of a relay.
@@ -21,7 +21,7 @@ public class AcRelay extends Action
 	 * @param on Whether the relay should be set to be on.
 	 */
 	public AcRelay(Relay relay, boolean on) {
-		super(new ChBoolean(true));
+		super(new ChTrue());
 		this.relay = relay;
 		this.on = on ? 1 : 0;
 	}
@@ -32,7 +32,7 @@ public class AcRelay extends Action
 	 * @param relay The relay being set by this command.
 	 */
 	public AcRelay(Relay relay) {
-		super(new ChBoolean(true));
+		super(new ChTrue());
 		this.relay = relay;
 		this.on = 2;
 	}

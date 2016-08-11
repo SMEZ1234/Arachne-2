@@ -3,8 +3,8 @@ package redbacks.arachne.lib.actions;
 import java.util.ArrayList;
 
 import redbacks.arachne.lib.checks.Check;
-import redbacks.arachne.lib.checks.ChNever;
-import redbacks.arachne.lib.checks.digital.ChBoolean;
+import redbacks.arachne.lib.checks.ChFalse;
+import redbacks.arachne.lib.checks.ChQueue;
 
 /**
  * This is an action that enables multiple actions to be run in parallel.
@@ -33,13 +33,13 @@ public class AcMulti extends Action
 	}
 	
 	/**
-	 * Alternate constructor assuming ChNever for the list of Actions.
+	 * Alternate constructor assuming ChFalse for the list of Actions.
 	 * The command will finish when all of its individual actions have finished.
 	 * 
 	 * @param actions The actions that will be run by this command.
 	 */
 	public AcMulti(Action... actions) {
-		this(new ChNever(), actions);
+		this(new ChFalse(), actions);
 	}
 	
 	public void onRun() {
@@ -48,7 +48,7 @@ public class AcMulti extends Action
 				actions.get(i).end();
 				actions.remove(i);
 			}
-			else actions.get(i).periodic();
+			else actions.get(i).execute();
 		}
 	}	
 	
@@ -63,8 +63,8 @@ public class AcMulti extends Action
 	}
 
 	public boolean isDone() {
-		boolean areAllBooleans = true;
-		for(Action action : actions) if(!(action.check instanceof ChBoolean)) areAllBooleans = false;
-		return actions.size() <= 0 || areAllBooleans;
+		boolean areAllQueues = true;
+		for(Action action : actions) if(!(action.check instanceof ChQueue)) areAllQueues = false;
+		return actions.size() == 0 || areAllQueues;
 	}
 }

@@ -2,8 +2,8 @@ package redbacks.arachne.lib.actions.actuators;
 
 import redbacks.arachne.lib.actions.Action;
 import redbacks.arachne.lib.checks.Check;
-import redbacks.arachne.lib.checks.ChNever;
-import redbacks.arachne.lib.checks.digital.ChBoolean;
+import redbacks.arachne.lib.checks.ChFalse;
+import redbacks.arachne.lib.checks.ChTrue;
 import redbacks.arachne.lib.motors.CtrlMotor;
 
 /**
@@ -53,7 +53,7 @@ public class AcMotor
 		 * @param motor The motor being set.
 		 */
 		public Disable(CtrlMotor motor) {
-			super(motor, 0, new ChBoolean(true));
+			super(motor, 0, new ChTrue());
 		}
 	}
 	
@@ -87,7 +87,7 @@ public class AcMotor
 		 * @param shouldEndWhenComplete Whether the action should automatically finish once the time is up.
 		 */
 		public RampTime(CtrlMotor motor, double speed, double time, boolean shouldEndWhenComplete) {
-			this(motor, speed, time, new ChNever(), shouldEndWhenComplete);
+			this(motor, speed, time, new ChFalse(), shouldEndWhenComplete);
 		}
 		
 		private RampTime(CtrlMotor motor, double speed, double time, Check check, boolean shouldEndWhenComplete) {
@@ -149,7 +149,7 @@ public class AcMotor
 		 * @param shouldEndWhenComplete Whether the action should automatically finish once the time is up.
 		 */
 		public RampAccel(CtrlMotor motor, double speed, double maxAccelPerSec, boolean shouldEndWhenComplete) {
-			this(motor, speed, maxAccelPerSec, new ChNever(), shouldEndWhenComplete);
+			this(motor, speed, maxAccelPerSec, new ChFalse(), shouldEndWhenComplete);
 		}
 		
 		private RampAccel(CtrlMotor motor, double speed, double maxAccelPerSec, Check check, boolean shouldEndWhenComplete) {

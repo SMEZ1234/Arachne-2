@@ -1,6 +1,6 @@
 package redbacks.arachne.lib.actions;
 
-import redbacks.arachne.lib.checks.digital.ChBoolean;
+import redbacks.arachne.lib.checks.ChTrue;
 import redbacks.arachne.lib.sensors.BinarySensor;
 
 /**
@@ -14,13 +14,13 @@ public class AcInvertBiSen extends Action
 	public int type;
 	
 	public AcInvertBiSen(BinarySensor sensor) {
-		super(new ChBoolean(true));
+		super(new ChTrue());
 		this.sensor = sensor;
 		this.type = 2;
 	}
 	
 	public AcInvertBiSen(BinarySensor sensor, boolean shouldInvert) {
-		super(new ChBoolean(true));
+		super(new ChTrue());
 		this.sensor = sensor;
 		this.type = shouldInvert ? 0 : 1;
 	}

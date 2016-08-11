@@ -3,7 +3,7 @@ package redbacks.arachne.lib.actions;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import redbacks.arachne.core.CommandBase;
-import redbacks.arachne.lib.checks.digital.ChBoolean;
+import redbacks.arachne.lib.checks.ChTrue;
 import redbacks.arachne.lib.subsystems.SubsystemBase;
 
 /**
@@ -24,7 +24,7 @@ public class AcInterrupt
 		 * @param commandToProgress The command which will be manually progressed to the next action.
 		 */
 		public KillAction(CommandBase commandToProgress) {
-			super(new ChBoolean(true));
+			super(new ChTrue());
 			target = commandToProgress;
 		}
 
@@ -44,7 +44,7 @@ public class AcInterrupt
 		 * @param commandToKill The command which will be cancelled.
 		 */
 		public KillCommand(CommandBase commandToKill) {
-			super(new ChBoolean(true));
+			super(new ChTrue());
 			target = commandToKill;
 		}
 
@@ -62,7 +62,7 @@ public class AcInterrupt
 		 * @param commandToKill The command which will be cancelled.
 		 */
 		public KillAllCommands() {
-			super(new ChBoolean(true));
+			super(new ChTrue());
 		}
 
 		public void onFinish() {
@@ -81,7 +81,7 @@ public class AcInterrupt
 		 * @param subsystemToReset The subsystem to cancel the current command on.
 		 */
 		public KillSubsystem(SubsystemBase subsystemToReset) {
-			super(new ChBoolean(true));
+			super(new ChTrue());
 			target = subsystemToReset;
 		}
 
@@ -96,7 +96,7 @@ public class AcInterrupt
 	public static class KillAllSubsystems extends Action
 	{
 		public KillAllSubsystems() {
-			super(new ChBoolean(true));
+			super(new ChTrue());
 		}
 
 		public void onFinish() {

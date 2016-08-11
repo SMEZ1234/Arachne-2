@@ -5,7 +5,7 @@ import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj.Solenoid;
 import redbacks.arachne.lib.actions.Action;
 import redbacks.arachne.lib.checks.ChTime;
-import redbacks.arachne.lib.checks.digital.ChBoolean;
+import redbacks.arachne.lib.checks.ChTrue;
 
 /**
  * Holds all solenoid actions.
@@ -28,7 +28,7 @@ public class AcSolenoid
 		 * @param position The position the solenoid should be set to.
 		 */
 		public Single(Solenoid solenoid, boolean position) {
-			super(new ChBoolean(true));
+			super(new ChTrue());
 			this.solenoid = solenoid;
 			this.position = position;
 		}

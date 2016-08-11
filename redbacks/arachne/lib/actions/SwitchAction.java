@@ -1,7 +1,7 @@
 package redbacks.arachne.lib.actions;
 
 import redbacks.arachne.lib.actions.Action;
-import redbacks.arachne.lib.checks.ChNever;
+import redbacks.arachne.lib.checks.ChFalse;
 import redbacks.arachne.lib.logic.GettableBoolean;
 
 public class SwitchAction extends Action
@@ -12,7 +12,7 @@ public class SwitchAction extends Action
 	private OptionAction[] options;
 	
 	public SwitchAction(Action defaultAction, OptionAction... options) {
-		super(new ChNever());
+		super(new ChFalse());
 		this.defaultAction = defaultAction;
 		this.options = options;
 	}
@@ -38,7 +38,7 @@ public class SwitchAction extends Action
 	}
 	
 	public void onRun() {
-		chosenAction.periodic();
+		chosenAction.execute();
 	}
 	
 	public void onFinish() {

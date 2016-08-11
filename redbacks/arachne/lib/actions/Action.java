@@ -61,7 +61,7 @@ public class Action
 	 * 
 	 * @param command The command in which this action is being run.
 	 */
-	public final void periodic() {
+	public final void execute() {
 		check.onRun();
 		onRun();
 	}

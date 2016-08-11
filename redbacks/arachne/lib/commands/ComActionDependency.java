@@ -16,6 +16,7 @@ public class ComActionDependency extends CommandBase
 	}
 	
 	public void interrupted() {
+		super.interrupted();
 		parentAction.cancel();
 	}
 }

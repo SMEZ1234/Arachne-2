@@ -1,6 +1,6 @@
 package redbacks.arachne.lib.actions;
 
-import redbacks.arachne.lib.checks.digital.ChBoolean;
+import redbacks.arachne.lib.checks.ChTrue;
 
 /**
  * JAVADOC
@@ -12,7 +12,7 @@ public class AcPrint extends Action
 	String stringToPrint;
 	
 	public AcPrint(String string) {
-		super(new ChBoolean(true));
+		super(new ChTrue());
 		stringToPrint = string;
 	}
 	

@@ -1,7 +1,7 @@
 package redbacks.arachne.lib.actions;
 
+import redbacks.arachne.lib.checks.ChQueue;
 import redbacks.arachne.lib.checks.Check;
-import redbacks.arachne.lib.checks.digital.ChBoolean;
 
 /**
  * This action should be called when the command should not perform any function.
@@ -12,7 +12,7 @@ import redbacks.arachne.lib.checks.digital.ChBoolean;
 public class AcDoNothing extends Action
 {
 	public AcDoNothing() {
-		this(new ChBoolean(false));
+		this(new ChQueue());
 	}
 	
 	public AcDoNothing(Check check) {

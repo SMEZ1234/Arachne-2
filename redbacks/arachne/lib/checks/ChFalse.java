@@ -5,9 +5,9 @@ package redbacks.arachne.lib.checks;
  * 
  * @author Sean Zammit
  */
-public class ChNever extends Check
+public class ChFalse extends Check
 {
-	public ChNever() {}
+	public ChFalse() {}
 	
 	public boolean isDone() {
 		return false;

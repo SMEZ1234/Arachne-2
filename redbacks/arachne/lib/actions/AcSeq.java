@@ -1,8 +1,8 @@
 package redbacks.arachne.lib.actions;
 
 import redbacks.arachne.core.CommandBase;
-import redbacks.arachne.lib.checks.ChNever;
-import redbacks.arachne.lib.checks.digital.ChBoolean;
+import redbacks.arachne.lib.checks.ChFalse;
+import redbacks.arachne.lib.checks.ChTrue;
 import redbacks.arachne.lib.commands.CommandSetup;
 import redbacks.arachne.lib.subsystems.SubsystemBase;
 
@@ -21,7 +21,7 @@ public class AcSeq
 		 * @param sequence A pre-existing command that will be triggered by this action.
 		 */
 		public Parallel(CommandSetup sequence) {
-			super(new ChBoolean(true));
+			super(new ChTrue());
 			this.sequence = sequence;
 		}
 		
@@ -55,7 +55,7 @@ public class AcSeq
 		 * @param sequence A pre-existing command that will be triggered by this action.
 		 */
 		public Sequential(CommandSetup sequence) {
-			super(new ChNever());
+			super(new ChFalse());
 			this.sequence = sequence;
 		}
 		

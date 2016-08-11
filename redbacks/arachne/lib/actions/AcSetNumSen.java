@@ -1,6 +1,6 @@
 package redbacks.arachne.lib.actions;
 
-import redbacks.arachne.lib.checks.digital.ChBoolean;
+import redbacks.arachne.lib.checks.ChTrue;
 import redbacks.arachne.lib.sensors.NumericSensor;
 
 /**
@@ -14,7 +14,7 @@ public class AcSetNumSen extends Action
 	public int value;
 	
 	public AcSetNumSen(NumericSensor sensor, int value) {
-		super(new ChBoolean(true));
+		super(new ChTrue());
 		this.sensor = sensor;
 		this.value = value;
 	}

@@ -1,6 +1,6 @@
 package redbacks.arachne.lib.actions;
 
-import redbacks.arachne.lib.checks.digital.ChBoolean;
+import redbacks.arachne.lib.checks.ChTrue;
 import redbacks.arachne.lib.sensors.NumericSensor;
 
 /**
@@ -14,7 +14,7 @@ public class AcPauseNumSen extends Action
 	public boolean pause;
 	
 	public AcPauseNumSen(NumericSensor sensor, boolean pause) {
-		super(new ChBoolean(true));
+		super(new ChTrue());
 		this.sensor = sensor;
 		this.pause = pause;
 	}

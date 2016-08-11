@@ -4,7 +4,8 @@ import java.util.ArrayList;
 
 import redbacks.arachne.lib.actions.AcDoNothing;
 import redbacks.arachne.lib.actions.Action;
-import redbacks.arachne.lib.checks.digital.ChBoolean;
+import redbacks.arachne.lib.checks.ChQueue;
+import redbacks.arachne.lib.checks.ChTrue;
 import redbacks.arachne.lib.motors.CtrlMotor;
 import redbacks.arachne.lib.subsystems.SubsystemBase;
 import edu.wpi.first.wpilibj.buttons.Button;
@@ -74,7 +75,7 @@ public class CommandBase extends Command
 		super();
 		if(requiredSystem != null) requires(requiredSystem);
 		if(actions.length > 0) for(Action action : actions) this.actionSeq.add(action);
-		else this.actionSeq.add(new AcDoNothing(new ChBoolean(true)));
+		else this.actionSeq.add(new AcDoNothing(new ChTrue()));
 	}
 	
 	public void requires(SubsystemBase subsystem) {
@@ -107,8 +108,17 @@ public class CommandBase extends Command
 	}
 	
 	protected void execute() {
-		Action action = readAction();
-		if(action != null) action.periodic();
+		if(actionSeq.size() > actionPos) {
+			Action action = actionSeq.get(actionPos);
+			
+			if(!action.isRunning) action.initialise(this);
+			action.execute();
+			if(action.isFinished() || (action.check instanceof ChQueue && actionSeq.size() > actionPos + 1)) {
+				action.end();
+				actionPos++;
+			}
+			if(action.isInterrupted) this.cancel();
+		}
 	}
 
 	/**
@@ -154,41 +164,5 @@ public class CommandBase extends Command
 	 */
 	public void queueActions(Action... actions) {
 		for(Action action : actions) actionSeq.add(action);
-	}
-	
-	/**
-	 * Handles the sequence of actions in the command.
-	 * 
-	 * @return The current action. Moves on to the next if the action is complete.
-	 */
-	private final Action readAction() {
-		if(actionSeq.size() > actionPos) {
-			Action action = actionSeq.get(actionPos);
-			
-			if(action.check instanceof ChBoolean) {
-				if(((ChBoolean) action.check).type == true) {
-					action.initialise(this);
-					action.periodic();
-					action.end();
-					actionPos++;
-					if(actionSeq.size() > actionPos) actionSeq.get(actionPos).initialise(this);
-				}
-				else if(actionSeq.size() > actionPos + 1) {
-					action.end();
-					actionPos++;
-					actionSeq.get(actionPos).initialise(this);
-				}
-			}
-			else if(action.isFinished()) {
-				action.end();
-				if(action.isInterrupted) this.cancel();
-				else {
-					actionPos++;
-					if(actionSeq.size() > actionPos) actionSeq.get(actionPos).initialise(this);
-				}
-			}
-			if(actionSeq.size() > actionPos) return actionSeq.get(actionPos);
-		}
-		return null;
 	}
 }

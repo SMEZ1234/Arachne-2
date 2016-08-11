@@ -2,7 +2,6 @@ package redbacks.arachne.lib.checks;
 
 import redbacks.arachne.core.CommandBase;
 import redbacks.arachne.lib.actions.Action;
-import redbacks.arachne.lib.checks.digital.ChBoolean;
 import redbacks.arachne.lib.logic.ListLogic;
 
 /**
@@ -23,7 +22,7 @@ public class ChMulti extends Check
 	 */
 	public ChMulti(ListLogic operator, Check... checks) {
 		this.operator = operator;
-		if(checks.length == 0) checklist = new Check[] {new ChBoolean(true)};
+		if(checks.length == 0) checklist = new Check[] {new ChTrue()};
 		else checklist = checks;
 		this.operator.populateWorkingList(checklist);
 	}
