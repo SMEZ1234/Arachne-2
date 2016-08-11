@@ -1,6 +1,5 @@
 package redbacks.arachne.lib.sensors;
 
-import redbacks.arachne.lib.logic.GettableNumber;
 import redbacks.arachne.lib.motors.CtrlMotor;
 import edu.wpi.first.wpilibj.CANTalon;
 
@@ -9,27 +8,19 @@ import edu.wpi.first.wpilibj.CANTalon;
  * 
  * @author Sean Zammit
  */
-public class CANEncoder implements GettableNumber
+public class SenCANEncoder extends NumericSensor
 {
 	private final CANTalon talon;
 	
-	public CANEncoder(CANTalon talon) {
+	public SenCANEncoder(CANTalon talon) {
 		this.talon = talon;
 	}
 	
-	public CANEncoder(CtrlMotor talon) {
+	public SenCANEncoder(CtrlMotor talon) {
 		this.talon = talon.controller;
 	}
 	
-	public void reset() {
-		set(0);
-	}
-	
-	public void set(int value) {
-		talon.setEncPosition(value);
-	}
-	
-	public double get() {
+	protected double getSenVal() {
 		return talon.getEncPosition();
 	}
 }

@@ -1,6 +1,8 @@
 package redbacks.arachne.lib.checks;
 
-public class Timer
+import redbacks.arachne.lib.logic.GettableNumber;
+
+public class Timer implements GettableNumber
 {
 	double startTime;
 	
