@@ -17,8 +17,8 @@ public class ChGettableBoolean extends CheckDigital {
 	 * @param gettable The gettable being checked.
 	 * @param isTriggered Whether the value should be true.
 	 */
-	public ChGettableBoolean(GettableBoolean gettable, boolean isTriggered) {
-		super(isTriggered);
+	public ChGettableBoolean(GettableBoolean gettable, boolean isTrue) {
+		super(isTrue);
 		this.gettable = gettable;
 	}
 

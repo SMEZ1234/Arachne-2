@@ -8,18 +8,19 @@ import redbacks.arachne.lib.sensors.NumericSensor;
  * 
  * @author Sean Zammit
  */
-public class AcSetNumericSensor extends Action
+public class AcPauseNumSen extends Action
 {
 	public NumericSensor sensor;
-	public int value;
+	public boolean pause;
 	
-	public AcSetNumericSensor(NumericSensor sensor, int value) {
+	public AcPauseNumSen(NumericSensor sensor, boolean pause) {
 		super(new ChBoolean(true));
 		this.sensor = sensor;
-		this.value = value;
+		this.pause = pause;
 	}
 
 	public void onFinish() {
-		sensor.set(value);
+		if(pause) sensor.pause();
+		else sensor.unpause();
 	}
 }

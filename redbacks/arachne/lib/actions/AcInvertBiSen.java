@@ -8,18 +8,18 @@ import redbacks.arachne.lib.sensors.BinarySensor;
  * 
  * @author Sean Zammit
  */
-public class AcInvertBinarySensor extends Action
+public class AcInvertBiSen extends Action
 {
 	public BinarySensor sensor;
 	public int type;
 	
-	public AcInvertBinarySensor(BinarySensor sensor) {
+	public AcInvertBiSen(BinarySensor sensor) {
 		super(new ChBoolean(true));
 		this.sensor = sensor;
 		this.type = 2;
 	}
 	
-	public AcInvertBinarySensor(BinarySensor sensor, boolean shouldInvert) {
+	public AcInvertBiSen(BinarySensor sensor, boolean shouldInvert) {
 		super(new ChBoolean(true));
 		this.sensor = sensor;
 		this.type = shouldInvert ? 0 : 1;

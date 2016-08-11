@@ -26,6 +26,8 @@ public class Action
 	
 	/** The time that this action began. Used for calculation of time spent running. */
 	private double startTime = -1;
+	
+	SubsystemBase[] systemDependencies;
 	  
 	/**
 	 * @param check The check associated with the action that determines when the action is complete
@@ -38,7 +40,7 @@ public class Action
 	 * JAVADOC
 	 */
 	public Action setDependencies(SubsystemBase... subsystems) {
-		for(SubsystemBase subsystem : subsystems) new ComActionDependency(subsystem, this);
+		this.systemDependencies = subsystems;
 		return this;
 	}
 	
@@ -76,6 +78,7 @@ public class Action
 	    startTime = Timer.getFPGATimestamp();
 	    isInterrupted = false;
 	    isRunning = true;
+	    if(systemDependencies != null) for(SubsystemBase subsystem : systemDependencies) new ComActionDependency(subsystem, this).start();
 		onStart();
 	}
 
