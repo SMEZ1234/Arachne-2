@@ -2,31 +2,34 @@ package redbacks.arachne.lib.sensors;
 
 import redbacks.arachne.lib.logic.GettableNumber;
 
-public class NumericSensor implements GettableNumber
+public abstract class NumericSensor implements GettableNumber
 {
 	double offset = 0, pauseValue = 0;
 	boolean isPaused = false;
-	GettableNumber sensor;	
 	
-	public NumericSensor(GettableNumber sensor) {
-		this.sensor = sensor;
-	}
-
-	public double get() {
+	public final double get() {
 		if(isPaused) return pauseValue;
-		return sensor.get() + offset;
+		return getSenVal() + offset;
 	}
 	
-	public void set(double value) {
-		offset = value - sensor.get();
+	/**
+	 * DO NOT CALL THIS.
+	 * It should only be accessed by NumericSensor. Use get() instead.
+	 * 
+	 * @return The sensor value to be used by NumericSensor
+	 */
+	protected abstract double getSenVal();
+	
+	public final void set(double value) {
+		offset = value - getSenVal();
 	}
 	
-	public void pause() {
+	public final void pause() {
 		isPaused = true;
-		pauseValue = sensor.get();
+		pauseValue = getSenVal();
 	}
 	
-	public void unpause() {
+	public final void unpause() {
 		isPaused = false;
 		set(pauseValue);
 	}
