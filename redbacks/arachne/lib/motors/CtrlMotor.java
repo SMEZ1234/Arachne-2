@@ -2,7 +2,7 @@ package redbacks.arachne.lib.motors;
 
 import redbacks.arachne.core.CommandBase;
 import redbacks.arachne.lib.logic.GettableNumber;
-import edu.wpi.first.wpilibj.CANTalon;
+import edu.wpi.first.wpilibj.SpeedController;
 
 /**
  * A replacement motor controller to enable automatic stopping of motors by commands when they finish.
@@ -12,7 +12,7 @@ import edu.wpi.first.wpilibj.CANTalon;
 public class CtrlMotor implements GettableNumber
 {
 	/** The motor controller held inside this class. */
-	public final CANTalon controller;
+	public final SpeedController controller;
 	
 	/** The last command to set the value of this motor. Used to automatically stop the motor when the command finishes. */
 	public CommandBase lastCommand;
@@ -25,7 +25,7 @@ public class CtrlMotor implements GettableNumber
 	/**
 	 * @param motor The motor controller held inside this class. This is the one that is redirected to whenever a method in this class is used.
 	 */
-	public CtrlMotor(CANTalon motor) {
+	public CtrlMotor(SpeedController motor) {
 		controller = motor;
 	}
 	
@@ -67,5 +67,13 @@ public class CtrlMotor implements GettableNumber
 	 */
 	public double get() {
 		return speed;
+	}
+
+	public void setInverted(boolean isInverted) {
+		controller.setInverted(isInverted);
+	}
+
+	public boolean getInverted() {
+		return controller.getInverted();
 	}
 }

@@ -14,7 +14,7 @@ public class SenCANDigitalInput extends BinarySensor
 	}
 	
 	public SenCANDigitalInput(CtrlMotor talon, boolean isForwardSwitch) {
-		this.talon = talon.controller;
+		this.talon = (CANTalon) talon.controller;
 		this.isForwardSwitch = isForwardSwitch;
 	}
 	

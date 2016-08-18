@@ -17,7 +17,7 @@ public class SenCANEncoder extends NumericSensor
 	}
 	
 	public SenCANEncoder(CtrlMotor talon) {
-		this.talon = talon.controller;
+		this.talon = (CANTalon) talon.controller;
 	}
 	
 	protected double getSenVal() {
