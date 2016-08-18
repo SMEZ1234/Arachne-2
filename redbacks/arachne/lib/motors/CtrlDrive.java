@@ -1,8 +1,8 @@
 package redbacks.arachne.lib.motors;
 
 import redbacks.arachne.core.CommandBase;
-import redbacks.arachne.core.references.RobotMap;
-import edu.wpi.first.wpilibj.CANTalon;
+import redbacks.arachne.core.ArachneRobot;
+import edu.wpi.first.wpilibj.SpeedController;
 
 /**
  * JAVADOC
@@ -10,12 +10,12 @@ import edu.wpi.first.wpilibj.CANTalon;
  * 
  * @author Sean Zammit
  */
-public class CtrlDrive extends CtrlMotor
+public class CtrlDrive extends CtrlMotor implements SpeedController
 {
 	/**
 	 * @param motor The motor controller held inside this class. This is the one that is redirected to whenever a method in this class is used.
 	 */
-	public CtrlDrive(CANTalon motor) {
+	public CtrlDrive(SpeedController motor) {
 		super(motor);
 	}
 	
@@ -28,7 +28,7 @@ public class CtrlDrive extends CtrlMotor
 	public void set(double outputValue, CommandBase command) {
 		lastCommand = command;
 		speed = outputValue;
-		RobotMap.isAutoController = true;
+		ArachneRobot.isIndivDriveControl = true;
 		if(!command.motorList.contains(this)) command.motorList.add(this);
 	}
 	
@@ -37,5 +37,41 @@ public class CtrlDrive extends CtrlMotor
 	 */
 	public void disable() {
 		speed = 0;
+	}
+
+	/**
+	 * Don't call this. Required SpeedController method.
+	 */
+	public void pidWrite(double output) {
+		controller.pidWrite(output);
+	}
+
+	/**
+	 * Don't call this. It's there to be called by RobotDrive. To change the speed, use set(double outputValue, CommandBase command).
+	 */
+	public void set(double speed, byte syncGroup) {
+		controller.set(speed, syncGroup);
+		this.speed = speed;
+	}
+
+	/**
+	 * Don't call this. It's there to be called by RobotDrive. To change the speed, use set(double outputValue, CommandBase command).
+	 */
+	public void set(double speed) {
+		controller.set(speed);
+		this.speed = speed;
+	}
+
+	public void setInverted(boolean isInverted) {
+		controller.setInverted(isInverted);
+	}
+
+	public boolean getInverted() {
+		return controller.getInverted();
+	}
+
+	public void stopMotor() {
+		controller.stopMotor();
+		disable();
 	}
 }
