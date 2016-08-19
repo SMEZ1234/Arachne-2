@@ -22,17 +22,16 @@ public class CtrlDrivetrain extends RobotDrive
 		drivetrains.add(this);
 	}
 	
-	//TODO Rename method
-	public void setMotorOutputs() {
+	public void passControllerOutputs() {
 		if(m_frontLeftMotor != null) {
-			m_frontLeftMotor.set(m_frontLeftMotor.get() * m_maxOutput, m_syncGroup);
+			((CtrlDrive) m_frontLeftMotor).controller.set(m_frontLeftMotor.get() * m_maxOutput, m_syncGroup);
 		}
-		m_rearLeftMotor.set(m_rearLeftMotor.get() * m_maxOutput, m_syncGroup);
+		((CtrlDrive) m_rearLeftMotor).controller.set(m_rearLeftMotor.get() * m_maxOutput, m_syncGroup);
 
 		if(m_frontRightMotor != null) {
-			m_frontRightMotor.set(-m_frontRightMotor.get() * m_maxOutput, m_syncGroup);
+			((CtrlDrive) m_frontRightMotor).controller.set(-m_frontRightMotor.get() * m_maxOutput, m_syncGroup);
 		}
-		m_rearRightMotor.set(-m_rearRightMotor.get() * m_maxOutput, m_syncGroup);
+		((CtrlDrive) m_rearRightMotor).controller.set(-m_rearRightMotor.get() * m_maxOutput, m_syncGroup);
 
 		if(this.m_syncGroup != 0) CANJaguar.updateSyncGroup(m_syncGroup);
 		if(m_safetyHelper != null) m_safetyHelper.feed();

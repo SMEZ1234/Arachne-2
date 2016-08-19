@@ -37,6 +37,7 @@ public class CtrlDrive extends CtrlMotor implements SpeedController
 	 */
 	public void disable() {
 		speed = 0;
+		ArachneRobot.isIndivDriveControl = false;
 	}
 
 	/**
@@ -50,7 +51,6 @@ public class CtrlDrive extends CtrlMotor implements SpeedController
 	 * Don't call this. It's there to be called by RobotDrive. To change the speed, use set(double outputValue, CommandBase command).
 	 */
 	public void set(double speed, byte syncGroup) {
-		controller.set(speed, syncGroup);
 		this.speed = speed;
 	}
 
@@ -58,7 +58,6 @@ public class CtrlDrive extends CtrlMotor implements SpeedController
 	 * Don't call this. It's there to be called by RobotDrive. To change the speed, use set(double outputValue, CommandBase command).
 	 */
 	public void set(double speed) {
-		controller.set(speed);
 		this.speed = speed;
 	}
 

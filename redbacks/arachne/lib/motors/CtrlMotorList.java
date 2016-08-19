@@ -1,7 +1,6 @@
 package redbacks.arachne.lib.motors;
 
 import redbacks.arachne.core.CommandBase;
-import edu.wpi.first.wpilibj.CANTalon;
 
 /**
  * A replacement motor controller to enable automatic stopping of motors by commands when they finish.
@@ -11,12 +10,12 @@ import edu.wpi.first.wpilibj.CANTalon;
 public class CtrlMotorList extends CtrlMotor
 {
 	/** The motor controller held inside this class. */
-	public final CANTalon[] controllers;
+	public final CtrlMotor[] controllers;
 	
 	/**
 	 * @param motor The motor controller held inside this class. This is the one that is redirected to whenever a method in this class is used.
 	 */
-	public CtrlMotorList(CANTalon... motors) {
+	public CtrlMotorList(CtrlMotor... motors) {
 		super(null);
 		controllers = motors;
 	}
@@ -28,22 +27,17 @@ public class CtrlMotorList extends CtrlMotor
 	 * @param command The command that last set the speed of the motor.
 	 */
 	public void set(double outputValue, CommandBase command) {
-		for(CANTalon m : controllers) m.set(outputValue);
+		for(CtrlMotor m : controllers) m.set(outputValue, command);
 		lastCommand = command;
 		speed = outputValue;
 		if(!command.motorList.contains(this)) command.motorList.add(this);
-	}
-	
-	public void set(double outputValue) {
-		for(CANTalon m : controllers) m.set(outputValue);
-		speed = outputValue;
 	}
 	
 	/**
 	 * Used to disable the motor when the command finishes.
 	 */
 	public void disable() {
-		for(CANTalon m : controllers) m.set(0);
+		for(CtrlMotor m : controllers) m.disable();
 		speed = 0;
 	}
 	

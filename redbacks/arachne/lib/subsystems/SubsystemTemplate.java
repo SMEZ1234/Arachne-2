@@ -1,7 +1,5 @@
 package redbacks.arachne.lib.subsystems;
 
-import static redbacks.arachne.core.references.RobotMap.*;
-
 /**
  * @author Author
  */
