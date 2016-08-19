@@ -4,18 +4,20 @@ import redbacks.arachne.lib.actions.Action;
 import redbacks.arachne.lib.actions.AcDoNothing;
 import redbacks.arachne.lib.commands.CommandSetup;
 import redbacks.arachne.lib.subsystems.SubsystemBase;
-import static redbacks.arachne.core.CommandBase.*;
+
+import redbacks.arachne.core.ArachneRobot;
 
 /**
  * Holds all commands.
  * 
  * @author Sean Zammit
  */
-public class CommandList
+public class CommandListStart
 {
-	private static SubsystemBase subsystemToUse;
+	protected static SubsystemBase subsystemToUse;
 	
 	//Commands which require no subsystem.
+	static {subsystemToUse = null;}
 	public static CommandSetup
 		doNothing = newCom(new AcDoNothing());
 
@@ -24,7 +26,7 @@ public class CommandList
 	//public static CommandSetup exampleCommand = newCom(new AcExample(), new AcExample());
 			
 	//Sequences
-	static {subsystemToUse = sequencer;}
+	static {subsystemToUse = ArachneRobot.sequencer;}
 	//public static CommandSetup
 	//	sequenceExample = newCom(
 	//			new AcSeq.Sequential(exampleCommandA),
@@ -38,7 +40,7 @@ public class CommandList
 	 * @param actions The list of actions to be run in the command.
 	 * @return The holder of the command. Use .c() to access the command.
 	 */
-	private static CommandSetup newCom(Action... actions) {
+	protected static CommandSetup newCom(Action... actions) {
 		return new CommandSetup(subsystemToUse, actions);
 	}
 	

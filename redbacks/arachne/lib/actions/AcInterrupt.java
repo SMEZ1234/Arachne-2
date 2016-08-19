@@ -2,6 +2,7 @@ package redbacks.arachne.lib.actions;
 
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import redbacks.arachne.core.ArachneRobot;
 import redbacks.arachne.core.CommandBase;
 import redbacks.arachne.lib.checks.ChTrue;
 import redbacks.arachne.lib.subsystems.SubsystemBase;
@@ -100,7 +101,7 @@ public class AcInterrupt
 		}
 
 		public void onFinish() {
-			for(Subsystem subsystem : CommandBase.subsystemList)
+			for(Subsystem subsystem : ArachneRobot.subsystemList)
 				if(subsystem.getCurrentCommand() != null) subsystem.getCurrentCommand().cancel();
 		}
 	}

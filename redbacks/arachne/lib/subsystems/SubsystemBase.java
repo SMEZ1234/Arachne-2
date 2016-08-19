@@ -2,6 +2,7 @@ package redbacks.arachne.lib.subsystems;
 
 import java.util.ArrayList;
 
+import redbacks.arachne.core.ArachneRobot;
 import redbacks.arachne.core.CommandBase;
 import redbacks.arachne.lib.actions.AcDoNothing;
 import redbacks.arachne.lib.commands.CommandSetup;
@@ -20,7 +21,7 @@ public class SubsystemBase extends Subsystem
 	
 	public SubsystemBase(SubsystemBase... childSystems) {
 		super();
-		CommandBase.subsystemList.add(this);
+		ArachneRobot.subsystemList.add(this);
 		setDefaultCommand(new CommandSetup(this, new AcDoNothing()).c());
 		for(SubsystemBase subsystem : childSystems) {
 			this.conflictSystems.add(subsystem);

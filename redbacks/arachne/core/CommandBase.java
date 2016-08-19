@@ -20,36 +20,6 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class CommandBase extends Command
 {
-	/** The instance of the operator interface. This is used to map inputs to functions. */
-	public static OI oi;
-
-	/**
-	 * A full list of subsystems on the robot.
-	 * Arachne only uses this list when interrupting all subsystems on the robot, but it's able to be used for other purposes as well, such as determining which subsystems are currently busy, etc.
-	 */
-	public static ArrayList<SubsystemBase> subsystemList = new ArrayList<SubsystemBase>();
-
-	//Create an instance of each subsystem here.
-	//public static SubsystemExample exampleSubsystem = new SubsystemExample();
-	
-	/** Exists so that complicated sequences involving many systems on the robot can be interrupted by another sequence. */
-	public static SubsystemBase sequencer = new SubsystemBase();
-	
-	/**
-	 * Called when the robot is first initialised.
-	 * In this case, it sets up the subsystems and the instance of the OI.
-	 */
-	public static void init() {
-		//Set default commands for each subsystem here.
-		//exampleSubsystem.setDefaultCommand(CommandList.exampleCommand.c());
-		
-		//Don't move or change this. EVER. Without it, no operator interface, no mapping, therefore "robot no move."
-		oi = new OI();
-	}
-	
-	//Arachne's additions follow.
-	//Don't modify any code below this point unless you're sure you know what you're doing.
-	
 	/**	The sequence of actions. This is never changed. */
 	private final ArrayList<Action> actionSeq = new ArrayList<Action>();
 	

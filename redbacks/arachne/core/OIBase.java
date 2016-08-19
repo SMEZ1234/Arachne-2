@@ -7,25 +7,17 @@ import edu.wpi.first.wpilibj.buttons.*;
  *
  * @author Sean Zammit
  */
-public class OI
+public abstract class OIBase
 {
-	/**
-	 * Inputs are mapped to functions inside this constructor.
-	 */
-	public OI() {
-		//Set what commands will run when buttons are pressed/held/released here.
-	}
-
-	//Set up joysticks and buttons here.
-
+	public abstract void mapOperations();
+	
 	/**
 	 * Triggers the command once when the button is first pressed.
 	 * 
 	 * @param button The button that should trigger the command. More complicated buttons can be found in 'redbacks.lib.input'.
-	 * @param commands Any commands to run. Commands should be set up in the file of the required subsystem, or CommandList should they not require a subsystem.
+	 * @param commands Any commands to run. Commands should be set up in the file of the required subsystem, or CommandListStart should they not require a subsystem.
 	 */
-	@SuppressWarnings("unused")
-	private void whenPressed(Button button, CommandBase... commands) {
+	protected void whenPressed(Button button, CommandBase... commands) {
 		for(CommandBase command : commands) button.whenPressed(command);
 	}
 
@@ -33,10 +25,9 @@ public class OI
 	 * Triggers the command once when the button is first pressed. The command will automatically be cancelled if the button is released.
 	 * 
 	 * @param button The button that should trigger the command. More complicated buttons can be found in 'redbacks.lib.input'.
-	 * @param commands Any commands to run. Commands should be set up in the file of the required subsystem, or CommandList should they not require a subsystem.
+	 * @param commands Any commands to run. Commands should be set up in the file of the required subsystem, or CommandListStart should they not require a subsystem.
 	 */
-	@SuppressWarnings("unused")
-	private void whenHeld(Button button, CommandBase... commands) {
+	protected void whenHeld(Button button, CommandBase... commands) {
 		for(CommandBase command : commands) button.whenPressed(command.setCancelWhenReleased(button));
 	}
 
@@ -44,10 +35,9 @@ public class OI
 	 * Triggers the command once when the button is first released.
 	 * 
 	 * @param button The button that should trigger the command. More complicated buttons can be found in 'redbacks.lib.input'.
-	 * @param commands Any commands to run. Commands should be set up in the file of the required subsystem, or CommandList should they not require a subsystem.
+	 * @param commands Any commands to run. Commands should be set up in the file of the required subsystem, or CommandListStart should they not require a subsystem.
 	 */
-	@SuppressWarnings("unused")
-	private void whenReleased(Button button, CommandBase... commands) {
+	protected void whenReleased(Button button, CommandBase... commands) {
 		for(CommandBase command : commands) button.whenReleased(command);
 	}
 
@@ -55,10 +45,9 @@ public class OI
 	 * Cancels the command when the button is first pressed.
 	 * 
 	 * @param button The button that should trigger the command. More complicated buttons can be found in 'redbacks.lib.input'.
-	 * @param commands Any commands to stop. Commands should be set up in the file of the required subsystem, or CommandList should they not require a subsystem.
+	 * @param commands Any commands to stop. Commands should be set up in the file of the required subsystem, or CommandListStart should they not require a subsystem.
 	 */
-	@SuppressWarnings("unused")
-	private void cancelWhenPressed(Button button, CommandBase... commands) {
+	protected void cancelWhenPressed(Button button, CommandBase... commands) {
 		for(CommandBase command : commands) button.cancelWhenPressed(command);
 	}
 
@@ -66,10 +55,9 @@ public class OI
 	 * Toggles the command each time the button is first pressed.
 	 * 
 	 * @param button The button that should trigger the command. More complicated buttons can be found in 'redbacks.lib.input'.
-	 * @param commands Any commands to run. Commands should be set up in the file of the required subsystem, or CommandList should they not require a subsystem.
+	 * @param commands Any commands to run. Commands should be set up in the file of the required subsystem, or CommandListStart should they not require a subsystem.
 	 */
-	@SuppressWarnings("unused")
-	private void toggleWhenPressed(Button button, CommandBase... commands) {
+	protected void toggleWhenPressed(Button button, CommandBase... commands) {
 		for(CommandBase command : commands) button.toggleWhenPressed(command);
 	}
 	
@@ -77,10 +65,9 @@ public class OI
 	 * Triggers the command every loop while the button is pressed.
 	 * 
 	 * @param button The button that should trigger the command. More complicated buttons can be found in 'redbacks.lib.input'.
-	 * @param commands Any commands to run. Commands should be set up in the file of the required subsystem, or CommandList should they not require a subsystem.
+	 * @param commands Any commands to run. Commands should be set up in the file of the required subsystem, or CommandListStart should they not require a subsystem.
 	 */
-	@SuppressWarnings("unused")
-	private void pulseWhileHeld(Button button, CommandBase... commands) {
+	protected void pulseWhileHeld(Button button, CommandBase... commands) {
 		for(CommandBase command : commands) button.whileHeld(command);
 	}
 }
