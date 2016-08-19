@@ -8,7 +8,7 @@ import redbacks.arachne.lib.sensors.NumericSensor;
  * 
  * @author Sean Zammit
  */
-public class ChNumericSensor extends CheckAnalog
+public class ChNumSen extends CheckAnalog
 {
 	NumericSensor sensor;
 	
@@ -16,7 +16,7 @@ public class ChNumericSensor extends CheckAnalog
 	 * @param value The analog value being checked for.
 	 * @param sensor The sensor being checked.
 	 */
-	public ChNumericSensor(double value, NumericSensor sensor) {
+	public ChNumSen(double value, NumericSensor sensor) {
 		this(value, sensor, true);
 	}
 	
@@ -25,7 +25,7 @@ public class ChNumericSensor extends CheckAnalog
 	 * @param sensor The sensor being checked.
 	 * @param isGreaterThan Whether the required reading is greater than the input.
 	 */
-	public ChNumericSensor(double value, NumericSensor sensor, boolean isGreaterThan) {
+	public ChNumSen(double value, NumericSensor sensor, boolean isGreaterThan) {
 		this(value, sensor, isGreaterThan, true);
 	}
 
@@ -35,7 +35,7 @@ public class ChNumericSensor extends CheckAnalog
 	 * @param isGreaterThan Whether the required reading is greater than the input.
 	 * @param useAbsoluteReading Whether the absolute analog reading should be used.
 	 */
-	public ChNumericSensor(double value, NumericSensor sensor, boolean isGreaterThan, boolean useAbsoluteReading) {
+	public ChNumSen(double value, NumericSensor sensor, boolean isGreaterThan, boolean useAbsoluteReading) {
 		this(value, sensor, isGreaterThan, useAbsoluteReading, true);
 	}
 
@@ -46,7 +46,7 @@ public class ChNumericSensor extends CheckAnalog
 	 * @param useAbsoluteReading Whether the absolute analog reading should be used.
 	 * @param shouldReset Whether whatever is returning an analog reading should be reset to 0 at the beginning of the check.
 	 */
-	public ChNumericSensor(double value, NumericSensor sensor, boolean isGreaterThan, boolean useAbsoluteReading, boolean shouldReset) {
+	public ChNumSen(double value, NumericSensor sensor, boolean isGreaterThan, boolean useAbsoluteReading, boolean shouldReset) {
 		super(value, isGreaterThan, useAbsoluteReading, shouldReset);
 		this.sensor = sensor;
 	}

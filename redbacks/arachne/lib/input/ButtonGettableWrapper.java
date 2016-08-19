@@ -3,7 +3,7 @@ package redbacks.arachne.lib.input;
 import edu.wpi.first.wpilibj.buttons.Button;
 import redbacks.arachne.lib.logic.GettableBoolean;
 
-public class ButtonGettableWrapper implements GettableBoolean
+public class ButtonGettableWrapper extends Button implements GettableBoolean
 {
 	public Button button;
 	
@@ -13,6 +13,10 @@ public class ButtonGettableWrapper implements GettableBoolean
 	
 	public boolean get() {
 		return button.get();
+	}
+	
+	public static ButtonGettableWrapper wrap(Button button) {
+		return new ButtonGettableWrapper(button);
 	}
 
 	public static ButtonGettableWrapper[] wrapList(Button... buttons) {
