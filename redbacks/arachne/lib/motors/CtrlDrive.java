@@ -1,7 +1,7 @@
 package redbacks.arachne.lib.motors;
 
-import redbacks.arachne.core.CommandBase;
 import redbacks.arachne.core.ArachneRobot;
+import redbacks.arachne.lib.commands.CommandBase;
 import edu.wpi.first.wpilibj.SpeedController;
 
 /**

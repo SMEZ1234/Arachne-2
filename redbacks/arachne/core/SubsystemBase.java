@@ -1,10 +1,9 @@
-package redbacks.arachne.lib.subsystems;
+package redbacks.arachne.core;
 
 import java.util.ArrayList;
 
-import redbacks.arachne.core.ArachneRobot;
-import redbacks.arachne.core.CommandBase;
 import redbacks.arachne.lib.actions.AcDoNothing;
+import redbacks.arachne.lib.commands.CommandBase;
 import redbacks.arachne.lib.commands.CommandSetup;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Subsystem;

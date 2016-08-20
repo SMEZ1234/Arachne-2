@@ -3,9 +3,9 @@ package redbacks.arachne.lib.actions;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import redbacks.arachne.core.ArachneRobot;
-import redbacks.arachne.core.CommandBase;
+import redbacks.arachne.core.SubsystemBase;
 import redbacks.arachne.lib.checks.ChTrue;
-import redbacks.arachne.lib.subsystems.SubsystemBase;
+import redbacks.arachne.lib.commands.CommandBase;
 
 /**
  * Holds all actions that interrupt other functions.

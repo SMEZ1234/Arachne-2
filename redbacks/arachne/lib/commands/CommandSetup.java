@@ -1,8 +1,7 @@
 package redbacks.arachne.lib.commands;
 
-import redbacks.arachne.core.CommandBase;
+import redbacks.arachne.core.SubsystemBase;
 import redbacks.arachne.lib.actions.Action;
-import redbacks.arachne.lib.subsystems.SubsystemBase;
 
 /**
  * Holds each command. It creates a new instance of the command each time the command is used.

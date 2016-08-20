@@ -1,10 +1,10 @@
 package redbacks.arachne.lib.actions;
 
-import redbacks.arachne.core.CommandBase;
+import redbacks.arachne.core.SubsystemBase;
 import redbacks.arachne.lib.checks.ChFalse;
 import redbacks.arachne.lib.checks.ChTrue;
+import redbacks.arachne.lib.commands.CommandBase;
 import redbacks.arachne.lib.commands.CommandSetup;
-import redbacks.arachne.lib.subsystems.SubsystemBase;
 
 /**
  * This Action will run a command populated with a list of provided actions, or a pre-existing command.

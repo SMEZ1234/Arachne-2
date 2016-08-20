@@ -1,10 +1,9 @@
 package redbacks.arachne.lib.commands;
 
-import redbacks.arachne.core.CommandBase;
+import redbacks.arachne.core.SubsystemBase;
 import redbacks.arachne.lib.actions.AcDoNothing;
 import redbacks.arachne.lib.actions.Action;
 import redbacks.arachne.lib.checks.digital.ChAction;
-import redbacks.arachne.lib.subsystems.SubsystemBase;
 
 public class ComActionDependency extends CommandBase
 {

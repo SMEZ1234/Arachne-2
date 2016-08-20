@@ -1,8 +1,8 @@
 package redbacks.arachne.core.references;
 
-import redbacks.arachne.core.CommandBase;
 import redbacks.arachne.lib.actions.AcDoNothing;
 import redbacks.arachne.lib.actions.Action;
+import redbacks.arachne.lib.commands.CommandBase;
 import redbacks.arachne.lib.commands.CommandSetup;
 
 /**

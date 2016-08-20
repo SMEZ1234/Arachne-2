@@ -1,7 +1,7 @@
 package redbacks.test.robot;
 
+import redbacks.arachne.core.SubsystemBase;
 import redbacks.arachne.lib.sensors.SenCANEncoder;
-import redbacks.arachne.lib.subsystems.SubsystemBase;
 
 import static redbacks.test.robot.Robot.*;
 

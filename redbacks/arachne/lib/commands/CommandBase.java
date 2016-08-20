@@ -1,13 +1,13 @@
-package redbacks.arachne.core;
+package redbacks.arachne.lib.commands;
 
 import java.util.ArrayList;
 
+import redbacks.arachne.core.SubsystemBase;
 import redbacks.arachne.lib.actions.AcDoNothing;
 import redbacks.arachne.lib.actions.Action;
 import redbacks.arachne.lib.checks.ChQueue;
 import redbacks.arachne.lib.checks.ChTrue;
 import redbacks.arachne.lib.motors.CtrlMotor;
-import redbacks.arachne.lib.subsystems.SubsystemBase;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.command.Command;
 

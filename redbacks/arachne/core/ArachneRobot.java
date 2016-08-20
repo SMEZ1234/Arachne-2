@@ -1,7 +1,7 @@
 package redbacks.arachne.core;
 
+import redbacks.arachne.lib.commands.CommandBase;
 import redbacks.arachne.lib.motors.CtrlDrivetrain;
-import redbacks.arachne.lib.subsystems.SubsystemBase;
 
 import java.util.ArrayList;
 

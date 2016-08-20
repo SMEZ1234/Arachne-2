@@ -1,6 +1,6 @@
 package redbacks.arachne.lib.motors;
 
-import redbacks.arachne.core.CommandBase;
+import redbacks.arachne.lib.commands.CommandBase;
 
 /**
  * A replacement motor controller to enable automatic stopping of motors by commands when they finish.

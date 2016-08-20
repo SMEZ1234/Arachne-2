@@ -1,10 +1,10 @@
 package redbacks.arachne.lib.actions;
 
 import edu.wpi.first.wpilibj.Timer;
-import redbacks.arachne.core.CommandBase;
+import redbacks.arachne.core.SubsystemBase;
 import redbacks.arachne.lib.checks.Check;
 import redbacks.arachne.lib.commands.ComActionDependency;
-import redbacks.arachne.lib.subsystems.SubsystemBase;
+import redbacks.arachne.lib.commands.CommandBase;
 
 /**
  * The main action class. Provides a base for all actions to be built on.

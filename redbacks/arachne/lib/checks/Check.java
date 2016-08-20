@@ -1,8 +1,8 @@
 package redbacks.arachne.lib.checks;
 
 import edu.wpi.first.wpilibj.Timer;
-import redbacks.arachne.core.CommandBase;
 import redbacks.arachne.lib.actions.Action;
+import redbacks.arachne.lib.commands.CommandBase;
 import redbacks.arachne.lib.logic.GettableBoolean;
 
 /**

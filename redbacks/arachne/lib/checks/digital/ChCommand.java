@@ -1,7 +1,7 @@
 package redbacks.arachne.lib.checks.digital;
 
-import redbacks.arachne.core.CommandBase;
 import redbacks.arachne.lib.checks.Check.CheckDigital;
+import redbacks.arachne.lib.commands.CommandBase;
 
 /**
  * Checks whether a command is complete.

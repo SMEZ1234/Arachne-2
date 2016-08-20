@@ -3,9 +3,8 @@ package redbacks.arachne.core.references;
 import redbacks.arachne.lib.actions.Action;
 import redbacks.arachne.lib.actions.AcDoNothing;
 import redbacks.arachne.lib.commands.CommandSetup;
-import redbacks.arachne.lib.subsystems.SubsystemBase;
-
 import redbacks.arachne.core.ArachneRobot;
+import redbacks.arachne.core.SubsystemBase;
 
 /**
  * Holds all commands.

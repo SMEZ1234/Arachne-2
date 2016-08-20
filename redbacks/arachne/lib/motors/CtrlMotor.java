@@ -1,6 +1,6 @@
 package redbacks.arachne.lib.motors;
 
-import redbacks.arachne.core.CommandBase;
+import redbacks.arachne.lib.commands.CommandBase;
 import redbacks.arachne.lib.logic.GettableNumber;
 import edu.wpi.first.wpilibj.SpeedController;
 

@@ -1,6 +1,7 @@
 package redbacks.arachne.core;
 
 import edu.wpi.first.wpilibj.buttons.*;
+import redbacks.arachne.lib.commands.CommandBase;
 
 /**
  * OI is used to map inputs to functions. An instance of OI can be found in CommandBase. DO NOT create one anywhere else.
