@@ -6,6 +6,7 @@ import redbacks.arachne.lib.motors.CtrlDrivetrain;
 import java.util.ArrayList;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -79,6 +80,9 @@ public abstract class ArachneRobot extends IterativeRobot
 	public void testPeriodic() {
 		LiveWindow.run();
 	}
+
+	public void disabledInit() {}
+	public void disabledPeriodic() {Timer.delay(0.001);}
 	
 	public void initialiseRobot() {}
 	public void initialiseAuto() {}
