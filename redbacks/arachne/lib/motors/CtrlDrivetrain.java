@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import edu.wpi.first.wpilibj.CANJaguar;
 import edu.wpi.first.wpilibj.RobotDrive;
+import redbacks.arachne.core.ArachneRobot;
 
 /**
  * @author Sean Zammit
@@ -33,7 +34,9 @@ public class CtrlDrivetrain extends RobotDrive
 		}
 		((CtrlDrive) m_rearRightMotor).controller.set(m_rearRightMotor.get() * m_maxOutput, m_syncGroup);
 
-		if(this.m_syncGroup != 0) CANJaguar.updateSyncGroup(m_syncGroup);
-		if(m_safetyHelper != null) m_safetyHelper.feed();
+		if(ArachneRobot.isIndivDriveControl) {
+			if(this.m_syncGroup != 0) CANJaguar.updateSyncGroup(m_syncGroup);
+			if(m_safetyHelper != null) m_safetyHelper.feed();
+		}
 	}
 }
