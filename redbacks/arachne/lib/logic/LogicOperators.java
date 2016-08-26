@@ -11,7 +11,7 @@ public enum LogicOperators implements ListLogic {
 	XOR,
 	XNOR;
 	
-	public ArrayList<GettableBoolean> workingList;
+	public ArrayList<GettableBoolean> workingList = new ArrayList<GettableBoolean>();
 
 	public boolean get() {
 		int count = 0;

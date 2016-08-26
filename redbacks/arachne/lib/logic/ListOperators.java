@@ -6,7 +6,7 @@ public enum ListOperators implements ListLogic {
 	ONCE,
 	ORDER;
 	
-	public ArrayList<GettableBoolean> workingList;
+	public ArrayList<GettableBoolean> workingList = new ArrayList<GettableBoolean>();
 
 	public boolean get() {
 		switch(this) {
