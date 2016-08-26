@@ -6,11 +6,11 @@ import redbacks.arachne.lib.commands.CommandBase;
 import redbacks.arachne.lib.commands.CommandSetup;
 
 /**
- * AutonomousStart holds all the autonomous functions used on the robot, and any autonomous specific commands.
+ * AutoStart holds all the autonomous functions used on the robot, and any autonomous specific commands.
  *
  * @author Sean Zammit
  */
-public class AutonomousStart
+public class AutoStart
 {
 	/**
 	 * Set the sequence of actions run in autonomous here.

@@ -43,8 +43,8 @@ public abstract class ArachneRobot extends IterativeRobot
 		isAuto = true;
 		
 		//This sets the command used to begin the autonomous sequence
-		int av = (int) SmartDashboard.getNumber("Autonomous Version", 0);
-		SmartDashboard.putNumber("Autonomous Version", av);
+		int av = (int) SmartDashboard.getNumber("Auto Version", 0);
+		SmartDashboard.putNumber("Auto Version", av);
 
 		//This starts the autonomous sequence.
 		getAutonomous(av).start();
