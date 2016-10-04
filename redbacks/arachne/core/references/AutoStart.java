@@ -1,6 +1,5 @@
 package redbacks.arachne.core.references;
 
-import redbacks.arachne.lib.actions.AcDoNothing;
 import redbacks.arachne.lib.actions.Action;
 import redbacks.arachne.lib.commands.CommandBase;
 import redbacks.arachne.lib.commands.CommandSetup;
@@ -22,7 +21,7 @@ public class AutoStart
 		//				new ActionExample(),
 		//				new ActionExample(),
 		//				new ActionExample());
-		default: return createAuto(new AcDoNothing());
+		default: return null;
 		}
 	}
 	
