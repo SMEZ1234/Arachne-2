@@ -44,7 +44,8 @@ public abstract class ArachneRobot extends IterativeRobot
 		SmartDashboard.putNumber("Auto Version", av);
 
 		//Starts the autonomous sequence.
-		getAutonomous(av).start();
+		CommandBase auto = getAutonomous(av);
+		if(auto != null) auto.start();
 		initialiseRobot();
 	}
 
