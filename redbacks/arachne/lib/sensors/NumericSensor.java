@@ -26,7 +26,7 @@ public abstract class NumericSensor implements GettableNumber
 	
 	public final void pause() {
 		isPaused = true;
-		pauseValue = getSenVal();
+		pauseValue = getSenVal() + offset;
 	}
 	
 	public final void unpause() {
