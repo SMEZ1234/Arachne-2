@@ -23,6 +23,6 @@ public class ChGettableBoolean extends CheckDigital {
 	}
 
 	public boolean isDone() {
-		return gettable.get();
+		return gettable.get() == type;
 	}
 }
