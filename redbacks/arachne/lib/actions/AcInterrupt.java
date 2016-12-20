@@ -16,12 +16,16 @@ public class AcInterrupt
 {
 	/**
 	 * Cancels the operation of a single action in a specified command.
+	 * 
+	 * @author Sean Zammit
 	 */
 	public static class KillAction extends Action
 	{
 		CommandBase target;
 
 		/**
+		 * Constructor for an action which interrupts the current action in a specified command.
+		 * 
 		 * @param commandToProgress The command which will be manually progressed to the next action.
 		 */
 		public KillAction(CommandBase commandToProgress) {
@@ -36,12 +40,16 @@ public class AcInterrupt
 
 	/**
 	 * Cancels the operation of a specified command.
+	 * 
+	 * @author Sean Zammit
 	 */
 	public static class KillCommand extends Action
 	{
 		CommandBase target;
 
 		/**
+		 * Constructor for an action which interrupts a specified command.
+		 * 
 		 * @param commandToKill The command which will be cancelled.
 		 */
 		public KillCommand(CommandBase commandToKill) {
@@ -55,12 +63,14 @@ public class AcInterrupt
 	}
 
 	/**
-	 * Cancels the operation of a specified command.
+	 * Cancels the operation of all running commands.
+	 * 
+	 * @author Sean Zammit
 	 */
 	public static class KillAllCommands extends Action
 	{
 		/**
-		 * @param commandToKill The command which will be cancelled.
+		 * Constructor for an action which interrupts all commands.
 		 */
 		public KillAllCommands() {
 			super(new ChTrue());
@@ -73,12 +83,16 @@ public class AcInterrupt
 
 	/**
 	 * Cancels the operation of whatever command is running on a specified subsystem.
+	 * 
+	 * @author Sean Zammit
 	 */
 	public static class KillSubsystem extends Action
 	{
 		SubsystemBase target;
 
 		/**
+		 * Constructor for an action which interrupts the current command in a specified subsystem.
+		 * 
 		 * @param subsystemToReset The subsystem to cancel the current command on.
 		 */
 		public KillSubsystem(SubsystemBase subsystemToReset) {
@@ -93,9 +107,14 @@ public class AcInterrupt
 
 	/**
 	 * Cancels the operation of all commands that have a dedicated subsystem.
+	 * 
+	 * @author Sean Zammit
 	 */
 	public static class KillAllSubsystems extends Action
 	{
+		/**
+		 * Constructor for an action which interrupts all subsystems.
+		 */
 		public KillAllSubsystems() {
 			super(new ChTrue());
 		}

@@ -27,7 +27,7 @@ public abstract class ArachneRobot extends IterativeRobot
 	
 	/** 
 	 * Exists so that complicated sequences involving many systems on the robot can be interrupted by another sequence. 
-	 * It should be a requirement for any large sequences, as long as those sequences are not subsequences of other sequences requiring this subsystem.
+	 * It should be a requirement for any large sequences, as long as said sequences are not subsequences of other sequences requiring this subsystem.
 	 */
 	public static SubsystemBase sequencer = new SubsystemBase();
 	
@@ -95,7 +95,7 @@ public abstract class ArachneRobot extends IterativeRobot
 	public abstract void initDefaultCommands();
 	
 	/** 
-	 * A required method to determine the autonomous that will run based on the ID given.
+	 * A required method to determine the autonomous that will run based on the ID given. Called by Arachne at the beginning of autonomous.
 	 * 
 	 * @param autoID The autonomous version number.
 	 */

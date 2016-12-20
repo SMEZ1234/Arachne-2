@@ -7,17 +7,26 @@ import redbacks.arachne.lib.commands.CommandBase;
 import redbacks.arachne.lib.commands.CommandSetup;
 
 /**
- * This Action will run a command populated with a list of provided actions, or a pre-existing command.
+ * Holds all actions that run another sequence of actions.
+ * This can be used for parallel sequences of actions running concurrently, or running a pre-existing command in the middle of an action sequence.
  * 
  * @author Sean Zammit
  */
 public class AcSeq
 {
-	public static class Parallel extends Action {
+	/**
+	 * An action that runs a sequence of actions concurrently to the original sequence.
+	 * 
+	 * @author Sean Zammit
+	 */
+	public static class Parallel extends Action
+	{
 		/** The command holder from which the command will be created. */
 		public CommandSetup sequence;
 		
 		/**
+		 * Constructor for an action that runs a pre-existing command in parallel to the original sequence.
+		 * 
 		 * @param sequence A pre-existing command that will be triggered by this action.
 		 */
 		public Parallel(CommandSetup sequence) {
@@ -26,6 +35,8 @@ public class AcSeq
 		}
 		
 		/**
+		 * Constructor for an action that runs a new list of actions in parallel to the original sequence, with a required subsystem.
+		 * 
 		 * @param requiredSystem The subsystem that this command requires, or null for none.
 		 * @param actions The list of actions to be run in the command.
 		 */
@@ -34,6 +45,8 @@ public class AcSeq
 		}
 		
 		/**
+		 * Constructor for an action that runs a new list of actions in parallel to the original sequence, without a required subsystem.
+		 * 
 		 * @param actions The list of actions to be run in the command.
 		 */
 		public Parallel(Action... actions) {
@@ -45,13 +58,22 @@ public class AcSeq
 		}
 	}
 	
-	public static class Sequential extends Action {
+	/**
+	 * An action which runs a new sequence of actions.
+	 * The original sequence will not progress until the new sequence is complete.
+	 * 
+	 * @author Sean Zammit
+	 */
+	public static class Sequential extends Action
+	{
 		/** The command holder from which the command will be created. */
 		public final CommandSetup sequence;
 		public CommandBase comToRun;
 		public boolean hasStarted = false;
 		
 		/**
+		 * Constructor for an action that runs a pre-existing command.
+		 * 
 		 * @param sequence A pre-existing command that will be triggered by this action.
 		 */
 		public Sequential(CommandSetup sequence) {
@@ -60,6 +82,8 @@ public class AcSeq
 		}
 		
 		/**
+		 * Constructor for an action that runs a new list of actions, with a required subsystem.
+		 * 
 		 * @param requiredSystem The subsystem that this command requires, or null for none.
 		 * @param actions The list of actions to be run in the command.
 		 */
@@ -68,6 +92,8 @@ public class AcSeq
 		}
 		
 		/**
+		 * Constructor for an action that runs a new list of actions, without a required subsystem.
+		 * 
 		 * @param actions The list of actions to be run in the command.
 		 */
 		public Sequential(Action... actions) {

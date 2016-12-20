@@ -15,8 +15,10 @@ import redbacks.arachne.lib.checks.ChTrue;
 public class AcSolenoid
 {
 	/**
-	 * Action class used to set the value of a single solenoid.
-	 * This command ends immediately, and sets the value of the solenoid on completion.
+	 * An action used to set the value of a single {@link Solenoid Solenoid}.
+	 * This action ends immediately, and sets the value of the solenoid on completion.
+	 * 
+	 * @author Sean Zammit
 	 */
 	public static class Single extends Action
 	{
@@ -24,7 +26,9 @@ public class AcSolenoid
 		private boolean position;
 		
 		/**
-		 * @param solenoid The single solenoid being set by this command.
+		 * Constructor for an action that will set the position of a {@link Solenoid Solenoid} to a specified position.
+		 * 
+		 * @param solenoid The single Solenoid being set.
 		 * @param position The position the solenoid should be set to.
 		 */
 		public Single(Solenoid solenoid, boolean position) {
@@ -39,8 +43,10 @@ public class AcSolenoid
 	}
 	
 	/**
-	 * Action class used to set the value of a double solenoid.
-	 * This command takes 0.1 seconds to complete. It sets the value of the solenoid at the beginning of the command, and turns it off at the end.
+	 * An action used to set the value of a {@link DoubleSolenoid DoubleSolenoid}.
+	 * This action takes 0.1 seconds to complete. It sets the value of the solenoid at the beginning of the action, and turns it off at the end.
+	 * 
+	 * @author Sean Zammit
 	 */
 	public static class Double extends Action
 	{
@@ -48,8 +54,10 @@ public class AcSolenoid
 		private Value position;
 		
 		/**
-		 * @param solenoid The double solenoid being set by this command.
-		 * @param position The position as a DoubleSolenoid.Value that this solenoid should be set to.
+		 * Constructor for an action that will set the position of a {@link DoubleSolenoid DoubleSolenoid} to a specified position.
+		 * 
+		 * @param solenoid The DoubleSolenoid being set.
+		 * @param position The position as a {@link Value DoubleSolenoid.Value} that this solenoid should be set to.
 		 */
 		public Double(DoubleSolenoid solenoid, Value position) {
 			super(new ChTime(0.1D));

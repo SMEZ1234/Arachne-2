@@ -1,11 +1,12 @@
 package redbacks.arachne.core.references;
 
+import redbacks.arachne.core.ArachneRobot;
 import redbacks.arachne.lib.actions.Action;
 import redbacks.arachne.lib.commands.CommandBase;
 import redbacks.arachne.lib.commands.CommandSetup;
 
 /**
- * AutoStart holds all the autonomous functions used on the robot, and any autonomous specific commands.
+ * AutoStart should be the superclass for your Auto class, which holds all of your autonomous routines.
  *
  * @author Sean Zammit
  */
@@ -13,6 +14,7 @@ public class AutoStart
 {
 	/**
 	 * Set the sequence of actions run in autonomous here.
+	 * You should override this method in your Auto class, and return it from the {@link ArachneRobot#getAutonomous(int) getAutonomous(int)} method in your robot class.
 	 */
 	public static CommandBase getAutonomous(int autoNumber) {
 		switch(autoNumber) {
@@ -25,6 +27,12 @@ public class AutoStart
 		}
 	}
 	
+	/**
+	 * Creates a new command for the autonomous sequence.
+	 * 
+	 * @param actions The actions that the command should run.
+	 * @return A new instance of {@link CommandBase CommandBase} containing the list of actions to be run in autonomous.
+	 */
 	public static CommandBase createAuto(Action... actions) {
 		return new CommandSetup(null, actions).c();
 	}

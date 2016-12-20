@@ -7,7 +7,7 @@ import redbacks.arachne.lib.checks.ChFalse;
 import redbacks.arachne.lib.checks.ChQueue;
 
 /**
- * This is an action that enables multiple actions to be run in parallel.
+ * An action that enables multiple actions to be run at the same time before progressing the sequence.
  * 
  * @author Sean Zammit
  */
@@ -20,9 +20,11 @@ public class AcMulti extends Action
 	ArrayList<Action> originalList = new ArrayList<Action>();
 	
 	/**
-	 * @param check The condition that will end this command regardless of the state of the individual actions it holds.
-	 * The command will also finish when all of its individual actions have finished.
-	 * @param actions The actions that will be run by this command.
+	 * Constructor to add an alternate ending condition to the multi-action.
+	 * 
+	 * @param check The condition that will end this multi-action regardless of the state of the individual actions it holds.
+	 * The action will also finish when all of its individual actions have finished.
+	 * @param actions The actions that will be run by this multi-action.
 	 */
 	public AcMulti(Check check, Action... actions) {
 		super(check);
@@ -33,10 +35,10 @@ public class AcMulti extends Action
 	}
 	
 	/**
-	 * Alternate constructor assuming ChFalse for the list of Actions.
-	 * The command will finish when all of its individual actions have finished.
+	 * Alternate constructor assuming {@link ChFalse ChFalse} for the list of Actions.
+	 * The multi-action will finish when all of its individual actions have finished.
 	 * 
-	 * @param actions The actions that will be run by this command.
+	 * @param actions The actions that will be run by this multi-action.
 	 */
 	public AcMulti(Action... actions) {
 		this(new ChFalse(), actions);
