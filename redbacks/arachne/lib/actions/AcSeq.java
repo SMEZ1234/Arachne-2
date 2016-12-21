@@ -23,7 +23,7 @@ public class AcSeq
 	{
 		/** The command holder from which the command will be created. */
 		public CommandSetup sequence;
-		
+
 		/**
 		 * Constructor for an action that runs a pre-existing command in parallel to the original sequence.
 		 * 
@@ -33,7 +33,7 @@ public class AcSeq
 			super(new ChTrue());
 			this.sequence = sequence;
 		}
-		
+
 		/**
 		 * Constructor for an action that runs a new list of actions in parallel to the original sequence, with a required subsystem.
 		 * 
@@ -43,7 +43,7 @@ public class AcSeq
 		public Parallel(SubsystemBase requiredSystem, Action... actions) {
 			this(new CommandSetup(requiredSystem, actions));
 		}
-		
+
 		/**
 		 * Constructor for an action that runs a new list of actions in parallel to the original sequence, without a required subsystem.
 		 * 
@@ -52,12 +52,12 @@ public class AcSeq
 		public Parallel(Action... actions) {
 			this(new CommandSetup(null, actions));
 		}
-		
+
 		public void onFinish() {
 			sequence.c().start();
 		}
 	}
-	
+
 	/**
 	 * An action which runs a new sequence of actions.
 	 * The original sequence will not progress until the new sequence is complete.
@@ -70,7 +70,7 @@ public class AcSeq
 		public final CommandSetup sequence;
 		public CommandBase comToRun;
 		public boolean hasStarted = false;
-		
+
 		/**
 		 * Constructor for an action that runs a pre-existing command.
 		 * 
@@ -80,7 +80,7 @@ public class AcSeq
 			super(new ChFalse());
 			this.sequence = sequence;
 		}
-		
+
 		/**
 		 * Constructor for an action that runs a new list of actions, with a required subsystem.
 		 * 
@@ -90,7 +90,7 @@ public class AcSeq
 		public Sequential(SubsystemBase requiredSystem, Action... actions) {
 			this(new CommandSetup(requiredSystem, actions));
 		}
-		
+
 		/**
 		 * Constructor for an action that runs a new list of actions, without a required subsystem.
 		 * 
@@ -99,20 +99,20 @@ public class AcSeq
 		public Sequential(Action... actions) {
 			this(new CommandSetup(null, actions));
 		}
-		
+
 		public void onStart() {
 			comToRun = sequence.c();
 			comToRun.start();
 		}
-		
+
 		public void onRun() {
 			if(!hasStarted && comToRun != null && comToRun.isRunning()) hasStarted = true;
 		}
-		
+
 		public boolean isDone() {
 			return hasStarted && comToRun != null && !comToRun.isRunning();
 		}
-		
+
 		public void onFinish() {
 			hasStarted = false;
 		}

@@ -13,7 +13,7 @@ public class AcPauseNumSen extends Action
 {
 	public NumericSensor sensor;
 	public boolean pause;
-	
+
 	/**
 	 * Constructor for an action that will set the pause state of a {@link NumericSensor NumericSensor}.
 	 * 

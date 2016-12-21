@@ -8,11 +8,6 @@ package redbacks.arachne.lib.checks;
  */
 public class ChQueue extends Check
 {
-	/**
-	 * Constructor for a check which will be counted as true if there is another action in the sequence it is running in.
-	 */
-	public ChQueue() {}
-
 	public boolean isDone() {
 		return false;
 	}

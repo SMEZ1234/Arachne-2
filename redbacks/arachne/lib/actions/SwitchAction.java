@@ -14,10 +14,10 @@ public class SwitchAction extends Action
 {
 	/** The action that has been selected to run. Will be null until {@link #onStart() onStart()} is called. */
 	public Action chosenAction;
-	
+
 	private Action defaultAction;
 	private OptionAction[] options;
-	
+
 	/**
 	 * Constructor for an action that will run one action from a list of options.
 	 * 
@@ -29,7 +29,7 @@ public class SwitchAction extends Action
 		this.defaultAction = defaultAction;
 		this.options = options;
 	}
-	
+
 	/**
 	 * A pairing of an action with the condition required for it to be run. Used only in {@link SwitchAction SwitchAction}.
 	 *
@@ -39,10 +39,10 @@ public class SwitchAction extends Action
 	{
 		/** The boolean value determining whether the action should be run. */
 		public GettableBoolean requirement;
-		
+
 		/** The action to run if the condition is met. */
 		public Action option;
-		
+
 		/**
 		 * Constructor to pair an action with a required condition.
 		 * Note that a {@link Check Check} is a valid {@link GettableBoolean GettableBoolean}, but its {@link Check#initialise(redbacks.arachne.lib.commands.CommandBase, Action) initialise(CommandBase, Action)}, {@link Check#onRun() onRun()} and {@link Check#onFinish() onFinish()} methods will not be called.
@@ -55,21 +55,21 @@ public class SwitchAction extends Action
 			this.option = option;
 		}
 	}
-	
+
 	public void onStart() {
 		for(OptionAction option : options) if(option.requirement.get()) {
-			chosenAction = option.option;
-			chosenAction.initialise(command);
-			return;
-		}
+				chosenAction = option.option;
+				chosenAction.initialise(command);
+				return;
+			}
 		chosenAction = defaultAction;
 		chosenAction.initialise(command);
 	}
-	
+
 	public void onRun() {
 		chosenAction.execute();
 	}
-	
+
 	public void onFinish() {
 		chosenAction.end();
 	}

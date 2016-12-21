@@ -24,7 +24,7 @@ public class AcSolenoid
 	{
 		private Solenoid solenoid;
 		private boolean position;
-		
+
 		/**
 		 * Constructor for an action that will set the position of a {@link Solenoid Solenoid} to a specified position.
 		 * 
@@ -36,12 +36,12 @@ public class AcSolenoid
 			this.solenoid = solenoid;
 			this.position = position;
 		}
-		
+
 		public void onFinish() {
 			solenoid.set(position);
 		}
 	}
-	
+
 	/**
 	 * An action used to set the value of a {@link DoubleSolenoid DoubleSolenoid}.
 	 * This action takes 0.1 seconds to complete. It sets the value of the solenoid at the beginning of the action, and turns it off at the end.
@@ -52,7 +52,7 @@ public class AcSolenoid
 	{
 		private DoubleSolenoid solenoid;
 		private Value position;
-		
+
 		/**
 		 * Constructor for an action that will set the position of a {@link DoubleSolenoid DoubleSolenoid} to a specified position.
 		 * 
@@ -64,11 +64,11 @@ public class AcSolenoid
 			this.solenoid = solenoid;
 			this.position = position;
 		}
-		
+
 		public void onStart() {
 			solenoid.set(position);
 		}
-		
+
 		public void onFinish() {
 			solenoid.set(Value.kOff);
 		}

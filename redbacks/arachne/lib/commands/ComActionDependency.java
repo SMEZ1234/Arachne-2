@@ -14,7 +14,7 @@ import redbacks.arachne.lib.checks.digital.ChAction;
 public class ComActionDependency extends CommandBase
 {
 	Action parentAction;
-	
+
 	/**
 	 * Constructor for a command that occupies a subsystem in order to create subsystem requirements for individual actions.
 	 * See {@link Action#systemDependencies Action.systemDependencies}.
@@ -26,7 +26,7 @@ public class ComActionDependency extends CommandBase
 		super(requiredSystem, new AcDoNothing(new ChAction(parentAction)));
 		this.parentAction = parentAction;
 	}
-	
+
 	public void interrupted() {
 		super.interrupted();
 		parentAction.cancel();

@@ -15,10 +15,10 @@ public class AcMulti extends Action
 {
 	/** The list of actions that will be run by this command. */
 	ArrayList<Action> actions = new ArrayList<Action>();
-	
+
 	/** The original list of actions, used to reset the list. */
 	ArrayList<Action> originalList = new ArrayList<Action>();
-	
+
 	/**
 	 * Constructor to add an alternate ending condition to the multi-action.
 	 * 
@@ -33,7 +33,7 @@ public class AcMulti extends Action
 			this.originalList.add(action);
 		}
 	}
-	
+
 	/**
 	 * Alternate constructor assuming {@link ChFalse ChFalse} for the list of Actions.
 	 * The multi-action will finish when all of its individual actions have finished.
@@ -43,7 +43,7 @@ public class AcMulti extends Action
 	public AcMulti(Action... actions) {
 		this(new ChFalse(), actions);
 	}
-	
+
 	public void onRun() {
 		for(int i = actions.size() - 1; i >= 0; i--) {
 			if(actions.get(i).isFinished()) {
@@ -52,12 +52,12 @@ public class AcMulti extends Action
 			}
 			else actions.get(i).execute();
 		}
-	}	
-	
+	}
+
 	public void onStart() {
 		for(Action action : actions) action.initialise(command);
 	}
-	
+
 	public void onFinish() {
 		for(Action action : actions) action.end();
 		actions.clear();

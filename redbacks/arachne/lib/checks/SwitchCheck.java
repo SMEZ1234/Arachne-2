@@ -11,10 +11,10 @@ public class SwitchCheck extends Check
 {
 	/** The check that has been selected to run. Will be null until {@link #onStart() onStart()} is called. */
 	public Check chosenCheck;
-	
+
 	private Check defaultCheck;
 	private OptionCheck[] options;
-	
+
 	/**
 	 * Constructor for a check that will run one check from a list of options.
 	 * 
@@ -25,7 +25,7 @@ public class SwitchCheck extends Check
 		this.defaultCheck = defaultCheck;
 		this.options = options;
 	}
-	
+
 	/**
 	 * A pairing of a check with the condition required for it to be run. Used only in {@link SwitchCheck SwitchCheck}.
 	 *
@@ -35,10 +35,10 @@ public class SwitchCheck extends Check
 	{
 		/** The boolean value determining whether the check should be run. */
 		public GettableBoolean requirement;
-		
+
 		/** The check to run if the condition is met. */
 		public Check option;
-		
+
 		/**
 		 * Constructor to pair a check with a required condition.
 		 * Note that another {@link Check Check} is a valid {@link GettableBoolean GettableBoolean}, but its {@link Check#initialise(redbacks.arachne.lib.commands.CommandBase, redbacks.arachne.lib.actions.Action) initialise(CommandBase, Action)}, {@link Check#onRun() onRun()} and {@link Check#onFinish() onFinish()} methods will not be called.
@@ -51,7 +51,7 @@ public class SwitchCheck extends Check
 			this.option = option;
 		}
 	}
-	
+
 	public void onStart() {
 		for(OptionCheck option : options) if(option.requirement.get()) {
 			chosenCheck = option.option;
@@ -61,11 +61,11 @@ public class SwitchCheck extends Check
 		chosenCheck = defaultCheck;
 		chosenCheck.initialise(command, action);
 	}
-	
+
 	public void onRun() {
 		chosenCheck.onRun();
 	}
-	
+
 	public void onFinish() {
 		chosenCheck.onFinish();
 	}

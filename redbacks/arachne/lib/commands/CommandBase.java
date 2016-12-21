@@ -20,24 +20,24 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class CommandBase extends Command
 {
-	/**	The sequence of actions run by this command. */
+	/** The sequence of actions run by this command. */
 	private final ArrayList<Action> actionSeq = new ArrayList<Action>();
-	
+
 	/** The position in the list of actions that the command is up to. */
 	int actionPos;
-	
+
 	/** The list of motors that this command has set the speed of. Used by Arachne to disable them when the command ends. */
 	public ArrayList<CtrlMotor> motorList = new ArrayList<CtrlMotor>();
 
 	/** A boolean used to determine whether the command should stop running when the button to trigger it is released. */
 	private boolean isWhileHeld = false;
-	
+
 	/** The button that, when released, will stop the command. It does not necessarily have to be the same button that activated it. */
 	private Button button;
-	
+
 	/** The single subsystem required by this command. If necessary, individual actions can have their own subsystem requirements. */
 	public SubsystemBase requiredSubsystem;
-	
+
 	/**
 	 * Constructor for a command with a required subsystem and a list of actions to run.
 	 * Do not call this. Use an instance of {@link CommandSetup CommandSetup} instead.
@@ -51,7 +51,7 @@ public class CommandBase extends Command
 		if(actions.length > 0) for(Action action : actions) this.actionSeq.add(action);
 		else this.actionSeq.add(new AcDoNothing(new ChTrue()));
 	}
-	
+
 	/**
 	 * Sets the required subsystem for this command.
 	 * 
@@ -67,31 +67,32 @@ public class CommandBase extends Command
 		actionSeq.get(0).initialise(this);
 		if(requiredSubsystem != null && this != requiredSubsystem.getDefaultCommand()) requiredSubsystem.interruptRelatedSubsystems();
 	}
-	
+
 	protected final void end() {
-		for(CtrlMotor motor : motorList) if(motor.lastCommand == this && motor.shouldCancel)
-			motor.disable();
+		for(CtrlMotor motor : motorList) if(motor.lastCommand == this && motor.shouldCancel) motor.disable();
 		motorList.clear();
 	}
-	
-	protected void interrupted() { this.end(); }
-	
+
+	protected void interrupted() {
+		this.end();
+	}
+
 	protected final boolean isFinished() {
 		return (isWhileHeld && !button.get()) || actionSeq.size() <= actionPos;
 	}
-	
+
 	protected void execute() {
 		if(actionSeq.size() > actionPos) {
 			Action action = actionSeq.get(actionPos);
-			
+
 			if(!action.isRunning) action.initialise(this);
 			action.execute();
-			
+
 			if(action.isFinished() || (action.check instanceof ChQueue && actionSeq.size() > actionPos + 1)) {
 				action.end();
 				actionPos++;
 			}
-			
+
 			if(action.isInterrupted) this.cancel();
 		}
 	}
@@ -106,7 +107,7 @@ public class CommandBase extends Command
 		this.button = button;
 		return this;
 	}
-	
+
 	/**
 	 * Completes the current action and progresses the sequence.
 	 */
@@ -114,7 +115,7 @@ public class CommandBase extends Command
 		actionSeq.get(actionPos).end();
 		actionPos++;
 	}
-	
+
 	/**
 	 * Adds a sequence of actions to the end of the current sequence.
 	 * 

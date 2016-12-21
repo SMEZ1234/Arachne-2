@@ -13,7 +13,7 @@ public class AcSetNumSen extends Action
 {
 	public NumericSensor sensor;
 	public double value;
-	
+
 	/**
 	 * Constructor for an action which will set the value returned by a {@link NumericSensor NumericSensor}.
 	 * 

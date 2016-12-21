@@ -11,7 +11,7 @@ import redbacks.arachne.lib.commands.CommandBase;
 public abstract class OIBase
 {
 	public abstract void mapOperations();
-	
+
 	/**
 	 * Sets the command to trigger once when the button is pressed.
 	 * 
@@ -61,7 +61,7 @@ public abstract class OIBase
 	protected void toggleWhenPressed(Button button, CommandBase... commands) {
 		for(CommandBase command : commands) button.toggleWhenPressed(command);
 	}
-	
+
 	/**
 	 * Sets the command to repeatedly trigger while the button is pressed.
 	 * 

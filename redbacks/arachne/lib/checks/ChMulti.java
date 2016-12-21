@@ -14,7 +14,7 @@ public class ChMulti extends Check
 	public Check[] checklist;
 
 	ListLogic operator;
-	
+
 	/**
 	 * Constructor for a check with multiple subchecks as conditions.
 	 * 
@@ -27,16 +27,16 @@ public class ChMulti extends Check
 		else checklist = checks;
 		this.operator.populateWorkingList(checklist);
 	}
-	
+
 	public void onStart() {
 		for(Check check : checklist) check.initialise(command, action);
 		operator.populateWorkingList(checklist);
 	}
-	
+
 	public void onRun() {
 		for(Check check : checklist) check.onRun();
 	}
-	
+
 	public void onFinish() {
 		for(Check check : checklist) check.onFinish();
 	}

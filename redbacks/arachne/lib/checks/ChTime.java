@@ -8,7 +8,7 @@ package redbacks.arachne.lib.checks;
 public class ChTime extends Check
 {
 	double time;
-	
+
 	/**
 	 * Constructor for a check that will return true after a specified period of time.
 	 * 

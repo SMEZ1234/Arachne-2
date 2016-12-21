@@ -18,15 +18,15 @@ public class AutoStart
 	 */
 	public static CommandBase getAutonomous(int autoNumber) {
 		switch(autoNumber) {
-		//Example autonomous
-		//case(1): return createAuto(
-		//				new ActionExample(),
-		//				new ActionExample(),
-		//				new ActionExample());
-		default: return null;
+			//Example autonomous
+			//case(1): return createAuto(
+			//				new ActionExample(),
+			//				new ActionExample(),
+			//				new ActionExample());
+			default: return null;
 		}
 	}
-	
+
 	/**
 	 * Creates a new command for the autonomous sequence.
 	 * 

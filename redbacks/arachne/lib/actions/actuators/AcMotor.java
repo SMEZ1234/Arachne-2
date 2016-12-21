@@ -23,7 +23,7 @@ public class AcMotor
 	{
 		private CtrlMotor motor;
 		private double speed;
-		
+
 		/**
 		 * Constructor for an action that repeatedly sets a motor to a specified speed.
 		 * 
@@ -36,16 +36,16 @@ public class AcMotor
 			this.motor = motor;
 			this.speed = speed;
 		}
-		
+
 		public void onStart() {
 			motor.set(speed, command);
 		}
-		
+
 		public void onRun() {
 			motor.set(speed, command);
 		}
 	}
-	
+
 	/**
 	 * An action that stops a motor.
 	 * 
@@ -62,7 +62,7 @@ public class AcMotor
 			super(motor, 0, new ChTrue());
 		}
 	}
-	
+
 	/**
 	 * An action used to ramp a motor to a certain speed over a set period of time.
 	 * 
@@ -73,7 +73,7 @@ public class AcMotor
 		private CtrlMotor motor;
 		private double speed, time, startSpeed, startTime;
 		private boolean shouldEnd;
-		
+
 		/**
 		 * Constructor for an action that will ramp a motor to a certain speed over a set period of time before finishing.
 		 * 
@@ -84,7 +84,7 @@ public class AcMotor
 		public RampTime(CtrlMotor motor, double speed, double time) {
 			this(motor, speed, time, new ChFalse(), true);
 		}
-		
+
 		/**
 		 * Constructor for an action that will ramp a motor to a certain speed over a set period of time, then finish when specified conditions are met.
 		 * 
@@ -101,27 +101,27 @@ public class AcMotor
 			this.time = time;
 			this.shouldEnd = shouldEndWhenComplete;
 		}
-		
+
 		public void onStart() {
 			startSpeed = motor.get();
 			startTime = command.timeSinceInitialized();
 		}
-		
+
 		public void onRun() {
 			double actionTime = command.timeSinceInitialized() - startTime;
 			if(speed >= startSpeed) motor.set(Math.min(startSpeed + actionTime / time * Math.abs(speed - startSpeed), speed), command);
 			else motor.set(Math.max(startSpeed - actionTime / time * Math.abs(speed - startSpeed), speed), command);
 		}
-		
+
 		public boolean isDone() {
 			return shouldEnd && command.timeSinceInitialized() - startTime > time;
 		}
-		
+
 		public void onFinish() {
 			motor.set(speed, command);
 		}
 	}
-	
+
 	/**
 	 * An action used to ramp a motor to a certain speed at a set acceleration.
 	 * 
@@ -132,7 +132,7 @@ public class AcMotor
 		private CtrlMotor motor;
 		private double speed, accel, startSpeed, startTime;
 		private boolean shouldEnd;
-		
+
 		/**
 		 * Constructor for an action that will ramp a motor to a certain speed at a set acceleration before finishing.
 		 * 
@@ -143,7 +143,7 @@ public class AcMotor
 		public RampAccel(CtrlMotor motor, double speed, double accelPerSec) {
 			this(motor, speed, accelPerSec, new ChFalse(), true);
 		}
-		
+
 		/**
 		 * Constructor for an action that will ramp a motor to a certain speed at a set acceleration, then finish when specified conditions are met.
 		 * 
@@ -160,22 +160,22 @@ public class AcMotor
 			this.accel = accelPerSec;
 			this.shouldEnd = shouldEndWhenComplete;
 		}
-		
+
 		public void onStart() {
 			startSpeed = motor.get();
 			startTime = command.timeSinceInitialized();
 		}
-		
+
 		public void onRun() {
 			double actionTime = command.timeSinceInitialized() - startTime;
 			if(speed >= startSpeed) motor.set(Math.min(startSpeed + actionTime * accel, speed), command);
 			else motor.set(Math.max(startSpeed - actionTime * accel, speed), command);
 		}
-		
+
 		public boolean isDone() {
 			return shouldEnd && motor.get() == speed;
 		}
-		
+
 		public void onFinish() {
 			motor.set(speed, command);
 		}

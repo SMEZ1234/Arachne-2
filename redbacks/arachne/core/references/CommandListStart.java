@@ -14,16 +14,15 @@ import redbacks.arachne.core.SubsystemBase;
 public class CommandListStart
 {
 	protected static SubsystemBase subsystemToUse;
-	
+
 	//Commands which require no subsystem.
 	static {subsystemToUse = null;}
-	public static CommandSetup
-		doNothing = newCom(new AcDoNothing());
+	public static CommandSetup doNothing = newCom(new AcDoNothing());
 
 	//Example subsystem
 	//static {subsystemToUse = exampleSubsystem;}
 	//public static CommandSetup exampleCommand = newCom(new AcExample(), new AcExample());
-			
+
 	//Sequences
 	static {subsystemToUse = ArachneRobot.sequencer;}
 	//public static CommandSetup
@@ -42,7 +41,7 @@ public class CommandListStart
 	protected static CommandSetup newCom(Action... actions) {
 		return new CommandSetup(subsystemToUse, actions);
 	}
-	
+
 	/**
 	 * Creates a new command from a list of actions and a subsystem.
 	 * 

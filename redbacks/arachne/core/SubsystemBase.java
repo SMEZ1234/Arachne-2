@@ -19,7 +19,7 @@ public class SubsystemBase extends Subsystem
 	 * Note that this will not work for any more than 2 levels of subsystem. It allows a subsystem's immediate children to interrupt it, but not their children. It's public in case you need to implement this yourself though.
 	 */
 	public ArrayList<SubsystemBase> conflictSystems = new ArrayList<SubsystemBase>();
-	
+
 	/**
 	 * Replaces {@link Subsystem Subsystem}'s constructor in order to populate {@link ArachneRobot ArachneRobot}'s {@link ArachneRobot#subsystemList subsystemList}, set an empty default command, and set up the list of conflicting subsystems.
 	 * 
@@ -52,7 +52,7 @@ public class SubsystemBase extends Subsystem
 	public void interruptRelatedSubsystems() {
 		for(SubsystemBase subsystem : conflictSystems) subsystem.getCurrentCommand().cancel();
 	}
-	
+
 	/**
 	 * Used to check whether the subsystem has a command running on it. Exists in case it ever is useful.
 	 * 
@@ -61,11 +61,11 @@ public class SubsystemBase extends Subsystem
 	public boolean isSubsystemBusy() {
 		return getCurrentCommand() != getDefaultCommand();
 	}
-	
+
 	public void setDefaultCommand(Command command) {
 		super.setDefaultCommand(command);
 	}
-	
+
 	public Command getDefaultCommand() {
 		return super.getDefaultCommand();
 	}

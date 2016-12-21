@@ -17,7 +17,7 @@ public class AcDoNothing extends Action
 	public AcDoNothing() {
 		this(new ChQueue());
 	}
-	
+
 	/**
 	 * Constructor for a blank action that ends once a condition is met.
 	 * 

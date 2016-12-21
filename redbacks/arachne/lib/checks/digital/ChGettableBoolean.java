@@ -13,6 +13,8 @@ public class ChGettableBoolean extends CheckDigital
 	GettableBoolean gettable;
 
 	/**
+	 * Constructor for a check based on the value of any {@link GettableBoolean GettableBoolean}.
+	 * 
 	 * @param gettable The gettable being checked.
 	 * @param isTrue Whether the required value is true.
 	 */

@@ -9,9 +9,9 @@ import redbacks.arachne.lib.checks.ChTrue;
  */
 public class AcPrint extends Action
 {
-	/** The string that the action will print when it ends */	
+	/** The string that the action will print when it ends */
 	String stringToPrint;
-	
+
 	/**
 	 * Constructor creating an action to print a specified string.
 	 * 
@@ -21,7 +21,7 @@ public class AcPrint extends Action
 		super(new ChTrue());
 		stringToPrint = string;
 	}
-	
+
 	protected void onFinish() {
 		System.out.println(stringToPrint);
 	}

@@ -13,7 +13,7 @@ public class AcInvertBiSen extends Action
 	/** The BinarySensor being inverted by this action. */
 	public BinarySensor sensor;
 	private int type;
-	
+
 	/**
 	 * Constructor for an action that will switch the current inversion state of a BinarySensor.
 	 * 
@@ -24,7 +24,7 @@ public class AcInvertBiSen extends Action
 		this.sensor = sensor;
 		this.type = 2;
 	}
-	
+
 	/**
 	 * Constructor for an action that will set the inversion state of a BinarySensor to a specified state.
 	 * 

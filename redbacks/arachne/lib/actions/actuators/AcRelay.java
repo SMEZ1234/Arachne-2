@@ -15,7 +15,7 @@ public class AcRelay extends Action
 {
 	private Relay relay;
 	private int on;
-	
+
 	/**
 	 * Constructor for an action that will switch the current state of a Relay.
 	 * 
@@ -26,7 +26,7 @@ public class AcRelay extends Action
 		this.relay = relay;
 		this.on = 2;
 	}
-	
+
 	/**
 	 * Constructor for an action that will set the state of a Relay to a specified state.
 	 * 
@@ -38,13 +38,9 @@ public class AcRelay extends Action
 		this.relay = relay;
 		this.on = on ? 1 : 0;
 	}
-	
+
 	public void onFinish() {
-		relay.set(
-				on == 1 ? Value.kOn : 
-				on == 0 ? Value.kOff : 
-				
-				relay.get() == Value.kOn ? Value.kOff : Value.kOn
-		);
+		relay.set(on == 1 ? Value.kOn : on == 0 ? Value.kOff :
+			relay.get() == Value.kOn ? Value.kOff : Value.kOn);
 	}
 }
