@@ -1,24 +1,18 @@
 package redbacks.arachne.lib.checks;
 
-import redbacks.arachne.lib.checks.Check.CheckDigital;
-
 /**
- * Creates a check that will always return a set value.
- * 
- * To have an action never end, use ChFalse.
+ * A check which always returns true.
  * 
  * @author Sean Zammit
  */
-public class ChTrue extends CheckDigital
+public class ChTrue extends Check
 {
 	/**
-	 * @param checkResult The value that the check will always return.
+	 * Constructor for a check which always returns true.
 	 */
-	public ChTrue() {
-		super(true);
-	}
+	public ChTrue() {}
 
 	public boolean isDone() {
-		return type;
+		return true;
 	}
 }

@@ -12,6 +12,7 @@ import redbacks.arachne.lib.logic.GettableBoolean;
  */
 public class SwitchAction extends Action
 {
+	/** The action that has been selected to run. Will be null until {@link #onStart() onStart()} is called. */
 	public Action chosenAction;
 	
 	private Action defaultAction;
@@ -36,7 +37,10 @@ public class SwitchAction extends Action
 	 */
 	public static class OptionAction
 	{
+		/** The boolean value determining whether the action should be run. */
 		public GettableBoolean requirement;
+		
+		/** The action to run if the condition is met. */
 		public Action option;
 		
 		/**

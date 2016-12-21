@@ -7,30 +7,56 @@ import redbacks.arachne.lib.logic.GettableBoolean;
 
 /**
  * The main check class. Provides a base for all checks to be built on.
- * Do not create instances of this class.
  * 
- * It also holds the superclasses for the digital and analog checks.
+ * It also holds the superclasses for digital and analog checks.
  * 
  * @author Sean Zammit
  */
 public abstract class Check implements GettableBoolean
 {
-	//JAVADOC Remember to mention null possibility.
+	/** The command within which the action that is running this check is running. Note that this may be null if the check is being used as a basic {@link GettableBoolean GettableBoolean}. */
 	public CommandBase command;
+	
+	/** The action within which this check is running. Like {@link #command command}, this may be null if the check is being used as a basic {@link GettableBoolean GettableBoolean}. */
 	public Action action;
 	
 	private boolean isInverse = false;
 	
-	/** The time that this action began. Used for calculation of time spent running. */
+	/** The time that this check began. Used for calculation of time spent running. */
 	private double startTime = -1;
 	
-	public boolean isFinished() {
-		return isDone() != isInverse;
-	}
-	
+	/**
+	 * Inverts the condition of the check.
+	 * 
+	 * @return This check, so that you can call it on the constructor.
+	 */
 	public final Check not() {
 		isInverse = !isInverse;
 		return this;
+	}
+	
+	/**
+	 * Checks whether the condition of the check is fulfilled.
+	 * This method also checks another method, {@link #isDone() isDone()}, which can be overwritten by individual checks.
+	 * 
+	 * @return Whether the condition of the check is fulfilled.
+	 */
+	public final boolean isFinished() {
+		return isDone() != isInverse;
+	}
+
+	/**
+	 * Runs when the check first starts. This method is used to handle anything that needs to be done before the check runs.
+	 * This method also runs another method, {@link #onStart() onStart()}, which can be overwritten by individual checks.
+	 * 
+	 * @param command The command in which the action which is running this check is being run.
+	 * @param action The action which is running this check.
+	 */
+	public final void initialise(CommandBase command, Action action) {
+	    startTime = Timer.getFPGATimestamp();
+	    this.command = command;
+	    this.action = action;
+		onStart();
 	}
 	
 	/**
@@ -41,45 +67,43 @@ public abstract class Check implements GettableBoolean
 	}
 	
 	/**
-	 * Performs the actual check.
+	 * Used by individual checks to set the conditions that must be fulfilled.
 	 * 
 	 * @return Whether the check conditions have been fulfilled.
 	 */
 	protected abstract boolean isDone();
 
 	/**
-	 * A blank method that can be overwritten by individual checks. Runs every loop.
+	 * Used by individual checks to perform any operations while the check is running.
 	 * This method will usually not be necessary.
 	 */
 	public void onRun() {}
-
-	public void initialise(CommandBase command, Action action) {
-	    startTime = Timer.getFPGATimestamp();
-	    this.command = command;
-	    this.action = action;
-		onStart();
-	}
 	
 	/**
-	 * A blank method that can be overwritten by individual checks. Called once when the action begins.
+	 * Used by individual checks to perform any operations when the check first begins to run.
 	 * This method will usually not be necessary.
 	 */
 	public void onStart() {}
 
 	/**
-	 * A blank method that can be overwritten by individual checks. Called once when the action ends.
+	 * Used by individual checks to perform any operations when the check is complete.
 	 * This method will usually not be necessary.
 	 */
 	public void onFinish() {}
 	
-	//JAVADOC
+	/**
+	 * Returns the time since the check was initialised, in seconds.
+	 * 
+	 * @return The time since the check was initialised, in seconds.
+	 */
 	public final double timeSinceInitialized() {
 	    return startTime < 0 ? 0 : Timer.getFPGATimestamp() - startTime;
 	}
 	
 	/**
-	 * The superclass for the digital checks. 
-	 * It holds a variable specifying whether the value should be true or false.
+	 * The superclass for the digital checks.
+	 * 
+	 * @author Sean Zammit
 	 */
 	public static abstract class CheckDigital extends Check
 	{
@@ -87,6 +111,8 @@ public abstract class Check implements GettableBoolean
 		public boolean type;
 		
 		/**
+		 * Super constructor for digital checks.
+		 * 
 		 * @param isTriggered Whether the value should be true.
 		 */
 		public CheckDigital(boolean isTriggered) {
@@ -95,8 +121,9 @@ public abstract class Check implements GettableBoolean
 	}
 	
 	/**
-	 * The superclass for the analog checks. 
-	 * It holds a variable specifying whether the value should be greater or less than the target, and a variable for the target.
+	 * The superclass for the analog checks.
+	 * 
+	 * @author Sean Zammit
 	 */
 	public static abstract class CheckAnalog extends Check
 	{		
@@ -113,7 +140,9 @@ public abstract class Check implements GettableBoolean
 		public boolean shouldReset;
 		
 		/**
-		 * @param value The target value for the check.
+		 * Super constructor for analog checks.
+		 * 
+		 * @param value The target analog reading for the check.
 		 * @param isGreaterThan Whether the returned value should be greater than the target.
 		 * @param useAbsoluteReading Whether the absolute analog reading should be used.
 		 * @param shouldReset Whether whatever is returning an analog reading should be reset to 0 at the beginning of the check.
@@ -129,6 +158,11 @@ public abstract class Check implements GettableBoolean
 			return type ? (isAbsolute ? Math.abs(getAnalogValue()) : getAnalogValue()) > value : (isAbsolute ? Math.abs(getAnalogValue()) : getAnalogValue()) <= value;
 		}
 		
+		/**
+		 * Used by individual analog checks to specify the value which will be used to determine whether the check's condition has been met.
+		 * 
+		 * @return The analog reading that will be used.
+		 */
 		public abstract double getAnalogValue();
 	}
 }

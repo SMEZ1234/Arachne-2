@@ -5,15 +5,18 @@ import redbacks.arachne.lib.commands.CommandBase;
 
 /**
  * Checks whether a command is complete.
- * May be useful when waiting for various actions on a subsystem to be complete before starting the next action.
+ * Useful when waiting for a sequence to be complete before starting the next action.
  * 
  * @author Sean Zammit
  */
-public class ChCommand extends CheckDigital {
+public class ChCommand extends CheckDigital
+{
 	CommandBase command;
-	
+
 	/**
-	 * @param command The command that the check is waiting for.
+	 * Constructor for a check that will return true when a command has finished running.
+	 * 
+	 * @param command The command being checked.
 	 */
 	public ChCommand(CommandBase command) {
 		super(true);
@@ -21,6 +24,6 @@ public class ChCommand extends CheckDigital {
 	}
 
 	public boolean isDone() {
-		return command.isRunning() != type;
+		return !command.isRunning();
 	}
 }

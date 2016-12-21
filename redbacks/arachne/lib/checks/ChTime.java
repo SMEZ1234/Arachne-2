@@ -1,7 +1,7 @@
 package redbacks.arachne.lib.checks;
 
 /**
- * Uses the timer to run an action until a specified amount of time has passed.
+ * A check that will return true after a specified period of time.
  * 
  * @author Sean Zammit
  */
@@ -10,7 +10,9 @@ public class ChTime extends Check
 	double time;
 	
 	/**
-	 * @param timeout The number of seconds until the check should be completed.
+	 * Constructor for a check that will return true after a specified period of time.
+	 * 
+	 * @param timeout The number of seconds until the condition should be fulfilled.
 	 */
 	public ChTime(double timeout) {
 		super();

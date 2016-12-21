@@ -4,7 +4,7 @@ import redbacks.arachne.core.SubsystemBase;
 import redbacks.arachne.lib.actions.Action;
 
 /**
- * Holds each command. It creates a new instance of the command each time the command is used.
+ * Used to create instances of commands.
  * 
  * @author Sean Zammit
  */
@@ -12,22 +12,20 @@ public class CommandSetup
 {
 	SubsystemBase subsystem;
 	Action[] actions;
-	
+
 	/**
-	 * CommandSetup is used to create Action commands.
-	 * The c() method creates a new instance of CommandBase based on the parameters in this constructor.
+	 * Constructor for an instance of CommandSetup that can be used to create commands.
 	 * 
-	 * @param requiredSystem The subsystem on which the command is run. Null for no subsystem.
+	 * @param requiredSystem The subsystem on which the command is run. Null for no subsystem requirement.
 	 * @param actions The sequence of actions that the command will perform.
 	 */
 	public CommandSetup(SubsystemBase requiredSystem, Action... actions) {
 		this.subsystem = requiredSystem;
 		this.actions = actions;
 	}
-	
+
 	/**
-	 * Creates a new instance of the command.
-	 * This will ensure that the command functions the same way each time, and that all variables are reset.
+	 * Creates a new CommandBase instance with the required subsystem and actions specified in the CommandSetup constructor.
 	 * 
 	 * @return The new CommandBase instance.
 	 */
