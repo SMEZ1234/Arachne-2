@@ -10,6 +10,9 @@ import redbacks.arachne.lib.commands.CommandBase;
  */
 public abstract class OIBase
 {
+	/**
+	 * Maps commands to buttons. This must be overridden by your OI class, and called from your {@link ArachneRobot#initDefaultCommands() Robot.initDefaultCommands()} method.
+	 */
 	public abstract void mapOperations();
 
 	/**

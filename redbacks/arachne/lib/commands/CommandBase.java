@@ -100,6 +100,7 @@ public class CommandBase extends Command
 	/**
 	 * Sets the command to run only until a button is released.
 	 * 
+	 * @param button The button which will cancel the command when released.
 	 * @return This command, so that you can call it on the constructor.
 	 */
 	public final CommandBase setCancelWhenReleased(Button button) {

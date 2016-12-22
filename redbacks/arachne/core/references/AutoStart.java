@@ -15,6 +15,9 @@ public class AutoStart
 	/**
 	 * Set the sequence of actions run in autonomous here.
 	 * You should override this method in your Auto class, and return it from the {@link ArachneRobot#getAutonomous(int) getAutonomous(int)} method in your robot class.
+	 * 
+	 * @param autoNumber Determines which autonomous routine you want to run.
+	 * @return The autonomous command to run.
 	 */
 	public static CommandBase getAutonomous(int autoNumber) {
 		switch(autoNumber) {

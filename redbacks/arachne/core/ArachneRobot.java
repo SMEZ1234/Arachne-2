@@ -100,6 +100,7 @@ public abstract class ArachneRobot extends IterativeRobot
 	 * A required method to determine the autonomous that will run based on the ID given. Called by Arachne at the beginning of autonomous.
 	 * 
 	 * @param autoID The autonomous version number.
+	 * @return The autonomous command to run.
 	 */
 	public abstract CommandBase getAutonomous(int autoID);
 }

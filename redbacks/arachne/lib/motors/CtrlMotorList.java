@@ -15,7 +15,7 @@ public class CtrlMotorList extends CtrlMotor
 	/**
 	 * Constructor for a grouping of motor controllers.
 	 * 
-	 * @param motor The motor controllers grouped inside this class. These are redirected to whenever a method in this class is used.
+	 * @param motors The motor controllers grouped inside this class. These are redirected to whenever a method in this class is used.
 	 */
 	public CtrlMotorList(CtrlMotor... motors) {
 		super(null);
