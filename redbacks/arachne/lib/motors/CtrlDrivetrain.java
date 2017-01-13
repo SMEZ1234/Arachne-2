@@ -2,7 +2,6 @@ package redbacks.arachne.lib.motors;
 
 import java.util.ArrayList;
 
-import edu.wpi.first.wpilibj.CANJaguar;
 import edu.wpi.first.wpilibj.RobotDrive;
 import redbacks.arachne.core.ArachneRobot;
 
@@ -45,17 +44,16 @@ public class CtrlDrivetrain extends RobotDrive
 	 */
 	public void passControllerOutputs() {
 		if(m_frontLeftMotor != null) {
-			((CtrlDrive) m_frontLeftMotor).controller.set(m_frontLeftMotor.get() * m_maxOutput, m_syncGroup);
+			((CtrlDrive) m_frontLeftMotor).controller.set(m_frontLeftMotor.get() * m_maxOutput);
 		}
-		((CtrlDrive) m_rearLeftMotor).controller.set(m_rearLeftMotor.get() * m_maxOutput, m_syncGroup);
+		((CtrlDrive) m_rearLeftMotor).controller.set(m_rearLeftMotor.get() * m_maxOutput);
 
 		if(m_frontRightMotor != null) {
-			((CtrlDrive) m_frontRightMotor).controller.set(m_frontRightMotor.get() * m_maxOutput, m_syncGroup);
+			((CtrlDrive) m_frontRightMotor).controller.set(m_frontRightMotor.get() * m_maxOutput);
 		}
-		((CtrlDrive) m_rearRightMotor).controller.set(m_rearRightMotor.get() * m_maxOutput, m_syncGroup);
+		((CtrlDrive) m_rearRightMotor).controller.set(m_rearRightMotor.get() * m_maxOutput);
 
 		if(ArachneRobot.isIndivDriveControl) {
-			if(this.m_syncGroup != 0) CANJaguar.updateSyncGroup(m_syncGroup);
 			if(m_safetyHelper != null) m_safetyHelper.feed();
 		}
 	}

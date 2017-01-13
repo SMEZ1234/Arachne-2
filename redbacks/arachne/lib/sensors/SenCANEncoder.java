@@ -1,7 +1,8 @@
 package redbacks.arachne.lib.sensors;
 
+import com.ctre.CANTalon;
+
 import redbacks.arachne.lib.motors.CtrlMotor;
-import edu.wpi.first.wpilibj.CANTalon;
 
 /**
  * A generic encoder attached to a Talon SRX CAN controller.

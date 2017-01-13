@@ -1,7 +1,8 @@
 package redbacks.arachne.lib.sensors;
 
+import com.ctre.CANTalon;
+
 import redbacks.arachne.lib.motors.CtrlMotor;
-import edu.wpi.first.wpilibj.CANTalon;
 
 /**
  * A generic analog sensor attached to a Talon SRX CAN controller.
@@ -11,7 +12,7 @@ import edu.wpi.first.wpilibj.CANTalon;
 public class SenCANAnalog extends NumericSensor
 {
 	private final CANTalon talon;
-
+	
 	/**
 	 * Constructor for a generic analog sensor attached to a Talon SRX CAN controller.
 	 * 
