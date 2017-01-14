@@ -9,12 +9,12 @@ import redbacks.arachne.lib.logic.GettableNumber;
  */
 public abstract class NumericSensor implements GettableNumber
 {
-	double offset = 0, pauseValue = 0;
-	boolean isPaused = false;
+	public double offset = 0, pauseValue = 0, scaleFactor = 1;
+	public boolean isPaused = false;
 
 	public final double get() {
-		if(isPaused) return pauseValue;
-		return getSenVal() + offset;
+		if(isPaused) return pauseValue * scaleFactor;
+		return (getSenVal() + offset) * scaleFactor;
 	}
 
 	/**
@@ -30,7 +30,7 @@ public abstract class NumericSensor implements GettableNumber
 	 * 
 	 * @param value The value to set the sensor to.
 	 */
-	public final void set(double value) {
+	public void set(double value) {
 		offset = value - getSenVal();
 	}
 
@@ -39,8 +39,8 @@ public abstract class NumericSensor implements GettableNumber
 	 * The reading will remain constant while paused.
 	 */
 	public final void pause() {
-		isPaused = true;
 		pauseValue = getSenVal() + offset;
+		isPaused = true;
 	}
 
 	/**
@@ -50,5 +50,9 @@ public abstract class NumericSensor implements GettableNumber
 	public final void unpause() {
 		isPaused = false;
 		set(pauseValue);
+	}
+	
+	public final void setScaleFactor(double scale) {
+		this.scaleFactor = scale;
 	}
 }
