@@ -50,6 +50,10 @@ public abstract class ArachneRobot extends IterativeRobot
 
 	public final void autonomousPeriodic() {
 		Scheduler.getInstance().run();
+
+		//Handles all Arachne drivetrains.
+		for(CtrlDrivetrain drive : CtrlDrivetrain.drivetrains) drive.passControllerOutputs();
+		
 		executeAuto();
 	}
 
