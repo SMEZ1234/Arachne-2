@@ -44,13 +44,6 @@ public class CtrlDrive extends CtrlMotor implements SpeedController
 	/**
 	 * Don't call this. It's there to be called by {@link RobotDrive}. To change the speed, use {@link #set(double, CommandBase)}.
 	 */
-	public void set(double speed, byte syncGroup) {
-		this.speed = speed;
-	}
-
-	/**
-	 * Don't call this. It's there to be called by {@link RobotDrive}. To change the speed, use {@link #set(double, CommandBase)}.
-	 */
 	public void set(double speed) {
 		this.speed = speed;
 	}

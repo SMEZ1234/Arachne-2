@@ -52,6 +52,11 @@ public abstract class NumericSensor implements GettableNumber
 		set(pauseValue);
 	}
 	
+	/**
+	 * Sets the multiplier used when getting sensor readings.
+	 * 
+	 * @param scale The multiplier to use.
+	 */
 	public final void setScaleFactor(double scale) {
 		this.scaleFactor = scale;
 	}
