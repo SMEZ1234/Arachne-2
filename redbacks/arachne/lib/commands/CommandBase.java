@@ -69,6 +69,8 @@ public class CommandBase extends Command
 	}
 
 	protected final void end() {
+		if(actionSeq.size() > actionPos) actionSeq.get(actionPos).end();
+		
 		for(CtrlMotor motor : motorList) if(motor.lastCommand == this && motor.shouldCancel) motor.disable();
 		motorList.clear();
 	}

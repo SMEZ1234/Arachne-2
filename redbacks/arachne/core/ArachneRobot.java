@@ -45,7 +45,7 @@ public abstract class ArachneRobot extends IterativeRobot
 		//Starts the autonomous sequence.
 		CommandBase auto = getAutonomous(av);
 		if(auto != null) auto.start();
-		initialiseRobot();
+		initialiseAuto();
 	}
 
 	public final void autonomousPeriodic() {
@@ -76,10 +76,12 @@ public abstract class ArachneRobot extends IterativeRobot
 		LiveWindow.run();
 	}
 
-	public void disabledInit() {}
+	public final void disabledInit() {
+		initialiseDisabled();
+	}
 
-	public void disabledPeriodic() {
-		Timer.delay(0.001);
+	public final void disabledPeriodic() {
+		executeDisabled();
 	}
 
 	/** Called once when the robot code starts. Replacement for {@link #robotInit() robotInit}. */
@@ -96,6 +98,14 @@ public abstract class ArachneRobot extends IterativeRobot
 
 	/** Called repeatedly during teleop. Replacement for {@link #teleopPeriodic() teleopPeriodic}. */
 	public void executeTeleop() {}
+
+	/** Called once when the robot is disabled. Replacement for {@link #disabledInit() disabledInit}. */
+	public void initialiseDisabled() {}
+
+	/** Called repeatedly while the robot is disabled. Replacement for {@link #disabledPeriodic() disabledPeriodic}. */
+	public void executeDisabled() {
+		Timer.delay(0.001);
+	}
 
 	/** A required method to set the default commands for each subsystem. Called during {@link #robotInit() robotInit}. */
 	public abstract void initDefaultCommands();
