@@ -1,5 +1,7 @@
 package redbacks.arachne.lib.sensors;
 
+import edu.wpi.first.wpilibj.PIDSource;
+import edu.wpi.first.wpilibj.PIDSourceType;
 import redbacks.arachne.lib.logic.GettableNumber;
 
 /**
@@ -7,8 +9,10 @@ import redbacks.arachne.lib.logic.GettableNumber;
  *
  * @author Sean Zammit
  */
-public abstract class NumericSensor implements GettableNumber
+public abstract class NumericSensor implements GettableNumber, PIDSource
 {
+	protected PIDSourceType pidType;
+
 	public double offset = 0, pauseValue = 0, scaleFactor = 1;
 	public boolean isPaused = false;
 
@@ -51,7 +55,7 @@ public abstract class NumericSensor implements GettableNumber
 		isPaused = false;
 		set(pauseValue);
 	}
-	
+
 	/**
 	 * Sets the multiplier used when getting sensor readings.
 	 * 
@@ -59,5 +63,17 @@ public abstract class NumericSensor implements GettableNumber
 	 */
 	public final void setScaleFactor(double scale) {
 		this.scaleFactor = scale;
+	}
+
+	public final void setPIDSourceType(PIDSourceType pidType) {
+		this.pidType = pidType;
+	}
+
+	public final PIDSourceType getPIDSourceType() {
+		return pidType;
+	}
+
+	public double pidGet() {
+		return get();
 	}
 }
