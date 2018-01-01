@@ -1,5 +1,8 @@
 package redbacks.arachne.core;
 
+import redbacks.arachne.core.api.RobotAPI;
+import redbacks.arachne.core.api.RobotAPI.Order;
+import redbacks.arachne.core.api.RobotExtender;
 import redbacks.arachne.lib.commands.CommandBase;
 import redbacks.arachne.lib.motors.CtrlDrivetrain;
 
@@ -38,6 +41,8 @@ public abstract class ArachneRobot extends IterativeRobot
 	public final void autonomousInit() {
 		isAuto = true;
 
+		for(RobotExtender extension : RobotAPI.getExtensions(Order.PRE)) extension.initialiseAuto();
+		
 		//Sets the autonomous sequence number.
 		int av = (int) SmartDashboard.getNumber("Auto Version", 0);
 		SmartDashboard.putNumber("Auto Version", av);
@@ -46,6 +51,8 @@ public abstract class ArachneRobot extends IterativeRobot
 		CommandBase auto = getAutonomous(av);
 		if(auto != null) auto.start();
 		initialiseAuto();
+		
+		for(RobotExtender extension : RobotAPI.getExtensions(Order.POST)) extension.initialiseAuto();
 	}
 
 	public final void autonomousPeriodic() {
@@ -53,14 +60,19 @@ public abstract class ArachneRobot extends IterativeRobot
 
 		//Handles all Arachne drivetrains.
 		for(CtrlDrivetrain drive : CtrlDrivetrain.drivetrains) drive.passControllerOutputs();
-		
+
+		for(RobotExtender extension : RobotAPI.getExtensions(Order.PRE)) extension.executeAuto();
 		executeAuto();
+		for(RobotExtender extension : RobotAPI.getExtensions(Order.POST)) extension.executeAuto();
 	}
 
 	public final void teleopInit() {
 		Scheduler.getInstance().removeAll();
 		isAuto = false;
+
+		for(RobotExtender extension : RobotAPI.getExtensions(Order.PRE)) extension.initialiseTeleop();
 		initialiseTeleop();
+		for(RobotExtender extension : RobotAPI.getExtensions(Order.POST)) extension.initialiseTeleop();
 	}
 
 	public final void teleopPeriodic() {
@@ -69,7 +81,9 @@ public abstract class ArachneRobot extends IterativeRobot
 		//Handles all Arachne drivetrains.
 		for(CtrlDrivetrain drive : CtrlDrivetrain.drivetrains) drive.passControllerOutputs();
 
+		for(RobotExtender extension : RobotAPI.getExtensions(Order.PRE)) extension.executeTeleop();
 		executeTeleop();
+		for(RobotExtender extension : RobotAPI.getExtensions(Order.POST)) extension.executeTeleop();
 	}
 
 	public void testPeriodic() {
@@ -77,11 +91,15 @@ public abstract class ArachneRobot extends IterativeRobot
 	}
 
 	public final void disabledInit() {
+		for(RobotExtender extension : RobotAPI.getExtensions(Order.PRE)) extension.initialiseDisabled();
 		initialiseDisabled();
+		for(RobotExtender extension : RobotAPI.getExtensions(Order.POST)) extension.initialiseDisabled();
 	}
 
 	public final void disabledPeriodic() {
+		for(RobotExtender extension : RobotAPI.getExtensions(Order.PRE)) extension.executeDisabled();
 		executeDisabled();
+		for(RobotExtender extension : RobotAPI.getExtensions(Order.POST)) extension.executeDisabled();
 	}
 
 	/** Called once when the robot code starts. Replacement for {@link #robotInit() robotInit}. */
