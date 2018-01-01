@@ -4,7 +4,7 @@ import edu.wpi.first.wpilibj.AnalogPotentiometer;
 
 /**
  * A generic potentiometer attached to an analog channel on the RIO.
- * If attached to a Talon SRX CAN controller, use {@link SenCANAnalog}.
+ * If attached to a Talon SRX CAN controller, use SenCANAnalog in the CTRE sub-library.
  *
  * @author Sean Zammit
  */
