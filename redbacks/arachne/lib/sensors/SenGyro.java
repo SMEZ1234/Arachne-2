@@ -7,37 +7,26 @@ import edu.wpi.first.wpilibj.interfaces.Gyro;
  *
  * @author Sean Zammit
  */
-public class SenGyro extends NumericSensor
+public abstract class SenGyro extends NumericSensor
 {
 	Gyro sensor;
 
-	/**
-	 * Constructor for a generic gyroscopic sensor.
-	 * 
-	 * @param sensor A WPILib instance of the sensor, which should extend {@link Gyro}.
-	 */
-	@Deprecated
-	public SenGyro(Gyro sensor) {
+	private SenGyro(Gyro sensor) {
 		this.sensor = sensor;
 	}
 
-	protected double getSenVal() {
-		return sensor.getAngle();
-	}
-
-	public double pidGet() {
-		switch(pidType) {
-			case kDisplacement:
-				return get();
-			case kRate:
-				return sensor.getRate();
-			default:
-				return 0.0;
-		}
-	}
-
+	/**
+	 * A generic gyroscopic sensor measuring rate of change.
+	 *
+	 * @author Sean Zammit
+	 */
 	public static class Rate extends SenGyro
 	{
+		/**
+		 * Constructor for a generic gyroscopic sensor measuring rate of change.
+		 * 
+		 * @param sensor A WPILib instance of the sensor, which should extend {@link Gyro}.
+		 */
 		public Rate(Gyro sensor) {
 			super(sensor);
 		}
@@ -51,8 +40,18 @@ public class SenGyro extends NumericSensor
 		}
 	}
 
+	/**
+	 * A generic gyroscopic sensor measuring displacement from an initial position.
+	 *
+	 * @author Sean Zammit
+	 */
 	public static class Displacement extends SenGyro
 	{
+		/**
+		 * Constructor for a generic gyroscopic sensor measuring displacement from an initial position.
+		 * 
+		 * @param sensor A WPILib instance of the sensor, which should extend {@link Gyro}.
+		 */
 		public Displacement(Gyro sensor) {
 			super(sensor);
 		}
