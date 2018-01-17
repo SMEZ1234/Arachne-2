@@ -5,13 +5,13 @@ import redbacks.arachne.core.api.RobotAPI.Order;
 import redbacks.arachne.core.api.RobotExtender;
 import redbacks.arachne.lib.commands.CommandBase;
 import redbacks.arachne.lib.motors.CtrlDrivetrain;
+import redbacks.arachne.lib.motors.CtrlMecanumDrivetrain;
 
 import java.util.ArrayList;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Scheduler;
-import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
@@ -60,6 +60,7 @@ public abstract class ArachneRobot extends IterativeRobot
 
 		//Handles all Arachne drivetrains.
 		for(CtrlDrivetrain drive : CtrlDrivetrain.drivetrains) drive.passControllerOutputs();
+		for(CtrlMecanumDrivetrain drive : CtrlMecanumDrivetrain.drivetrains) drive.passControllerOutputs();
 
 		for(RobotExtender extension : RobotAPI.getExtensions(Order.PRE)) extension.executeAuto();
 		executeAuto();
@@ -80,14 +81,11 @@ public abstract class ArachneRobot extends IterativeRobot
 
 		//Handles all Arachne drivetrains.
 		for(CtrlDrivetrain drive : CtrlDrivetrain.drivetrains) drive.passControllerOutputs();
+		for(CtrlMecanumDrivetrain drive : CtrlMecanumDrivetrain.drivetrains) drive.passControllerOutputs();
 
 		for(RobotExtender extension : RobotAPI.getExtensions(Order.PRE)) extension.executeTeleop();
 		executeTeleop();
 		for(RobotExtender extension : RobotAPI.getExtensions(Order.POST)) extension.executeTeleop();
-	}
-
-	public void testPeriodic() {
-		LiveWindow.run();
 	}
 
 	public final void disabledInit() {

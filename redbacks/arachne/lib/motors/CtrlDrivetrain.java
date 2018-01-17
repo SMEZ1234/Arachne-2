@@ -7,8 +7,7 @@ import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import redbacks.arachne.core.ArachneRobot;
 
 /**
- * A replacement for {@link RobotDrive} that allows motor speeds to be set individually without having conflicting instructions from the RobotDrive methods.
- * TODO Mecanum drive support
+ * A replacement for {@link DifferentialDrive} that allows motor speeds to be set individually without having conflicting instructions from the DifferentialDrive methods.
  * 
  * @author Sean Zammit
  */
@@ -21,7 +20,7 @@ public class CtrlDrivetrain extends DifferentialDrive
 	public SpeedController m_rightMotor;
 	
 	/**
-	 * Constructor for a drivetrain that has two motors, both of which must be instances of {@link CtrlDrive}.
+	 * Constructor for a drivetrain that has two non-slave motors, both of which must be instances of {@link CtrlDrive}.
 	 * 
 	 * @param leftMotor The left CtrlDrive object used to drive the robot.
 	 * @param rightMotor The right CtrlDrive object used to drive the robot.
