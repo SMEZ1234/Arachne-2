@@ -6,4 +6,4 @@ The Arachne library was created by 4613 to reduce the time and difficulty in pro
 
 This is the core module, which contains all Arachne classes that have no dependencies other than WPILib. In most cases, this module will be all that a team needs. Other modules, along with descriptions of their purposes, can be found on the releases page.
 
-RELEASE VERSION: Arachne 2.0.3 (2017)
+RELEASE VERSION: Arachne 2.1.0 (2018)
