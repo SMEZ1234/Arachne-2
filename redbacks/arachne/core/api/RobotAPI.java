@@ -2,6 +2,8 @@ package redbacks.arachne.core.api;
 
 import java.util.ArrayList;
 
+import redbacks.arachne.core.ArachneRobot;
+
 /**
  * Contains functions used to integrate secondary Arachne modules without overriding code in the core module.
  * Though teams are welcome to use its functionality, you can get the same results by just extending and overriding the relevant classes.

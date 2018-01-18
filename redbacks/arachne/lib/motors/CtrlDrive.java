@@ -3,6 +3,7 @@ package redbacks.arachne.lib.motors;
 import redbacks.arachne.core.ArachneRobot;
 import redbacks.arachne.lib.commands.CommandBase;
 import edu.wpi.first.wpilibj.SpeedController;
+import edu.wpi.first.wpilibj.drive.RobotDriveBase;
 
 /**
  * A replacement drive motor controller that is used to avoid conflicting instructions when individually setting motors on the drivetrain.
@@ -41,7 +42,7 @@ public class CtrlDrive extends CtrlMotor implements SpeedController
 	}
 
 	/**
-	 * Don't call this. It's there to be called by {@link RobotDrive}. To change the speed, use {@link #set(double, CommandBase)}.
+	 * Don't call this. It's there to be called by {@link RobotDriveBase}. To change the speed, use {@link #set(double, CommandBase)}.
 	 */
 	public void set(double speed) {
 		this.speed = speed;
