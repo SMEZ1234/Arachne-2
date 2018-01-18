@@ -37,6 +37,12 @@ public abstract class ArachneRobot extends IterativeRobot
 		initDefaultCommands();
 		initialiseRobot();
 	}
+	
+	public final void robotPeriodic() {
+		for(RobotExtender extension : RobotAPI.getExtensions(Order.PRE)) extension.executeRobot();
+		executeRobot();
+		for(RobotExtender extension : RobotAPI.getExtensions(Order.POST)) extension.executeRobot();
+	}
 
 	public final void autonomousInit() {
 		isAuto = true;
@@ -102,6 +108,9 @@ public abstract class ArachneRobot extends IterativeRobot
 
 	/** Called once when the robot code starts. Replacement for {@link #robotInit() robotInit}. */
 	public void initialiseRobot() {}
+
+	/** Called repeatedly during all modes. Replacement for {@link #robotPeriodic() robotPeriodic}. */
+	public void executeRobot() {}
 
 	/** Called once when autonomous starts. Replacement for {@link #autonomousInit() autonomousInit}. */
 	public void initialiseAuto() {}

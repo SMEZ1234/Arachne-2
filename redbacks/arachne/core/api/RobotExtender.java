@@ -23,6 +23,9 @@ public class RobotExtender
 	/** Called once when the robot code starts. Replacement for {@link ArachneRobot#robotInit()}. */
 	public void initialiseRobot() {}
 
+	/** Called repeatedly during all modes. Replacement for {@link ArachneRobot#robotPeriodic()}. */
+	public void executeRobot() {}
+
 	/** Called once when autonomous starts. Replacement for {@link ArachneRobot#autonomousInit()}. */
 	public void initialiseAuto() {}
 
