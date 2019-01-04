@@ -1,6 +1,7 @@
 package redbacks.arachne.core.references;
 
 import redbacks.arachne.core.ArachneRobot;
+import redbacks.arachne.lib.actions.AcSeq;
 import redbacks.arachne.lib.actions.Action;
 import redbacks.arachne.lib.commands.CommandBase;
 import redbacks.arachne.lib.commands.CommandSetup;
@@ -34,9 +35,9 @@ public class AutoStart
 	 * Creates a new command for the autonomous sequence.
 	 * 
 	 * @param actions The actions that the command should run.
-	 * @return A new instance of {@link CommandBase CommandBase} containing the list of actions to be run in autonomous.
+	 * @return A new instance of {@link CommandBase} containing the list of actions to be run in autonomous.
 	 */
 	public static CommandBase createAuto(Action... actions) {
-		return new CommandSetup(null, actions).c();
+		return new CommandSetup(null, new AcSeq.Parallel(actions)).c();
 	}
 }
