@@ -21,8 +21,10 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  */
 public abstract class ArachneRobot extends IterativeRobot
 {
-	public static boolean isAuto,
-			isIndivDriveControl = false;
+	public static boolean isAuto, isIndivDriveControl = false;
+
+	public static boolean interruptAtAuto = true, interruptAtTele = true, interruptAtDisable = true;
+	public static boolean executeInAuto = true, executeInTele = true, executeInDisable = false;
 
 	/** Contains all subsystems on the robot, and allows for all commands requiring subsystems to be cancelled. */
 	public static ArrayList<SubsystemBase> subsystemList = new ArrayList<SubsystemBase>();
@@ -45,6 +47,7 @@ public abstract class ArachneRobot extends IterativeRobot
 	}
 
 	public final void autonomousInit() {
+		if(interruptAtAuto) Scheduler.getInstance().removeAll();
 		isAuto = true;
 
 		for(RobotExtender extension : RobotAPI.getExtensions(Order.PRE)) extension.initialiseAuto();
@@ -62,7 +65,7 @@ public abstract class ArachneRobot extends IterativeRobot
 	}
 
 	public final void autonomousPeriodic() {
-		Scheduler.getInstance().run();
+		if(executeInAuto) Scheduler.getInstance().run();
 
 		//Handles all Arachne drivetrains.
 		for(CtrlDrivetrain drive : CtrlDrivetrain.drivetrains) drive.passControllerOutputs();
@@ -74,7 +77,7 @@ public abstract class ArachneRobot extends IterativeRobot
 	}
 
 	public final void teleopInit() {
-		Scheduler.getInstance().removeAll();
+		if(interruptAtTele) Scheduler.getInstance().removeAll();
 		isAuto = false;
 
 		for(RobotExtender extension : RobotAPI.getExtensions(Order.PRE)) extension.initialiseTeleop();
@@ -83,7 +86,7 @@ public abstract class ArachneRobot extends IterativeRobot
 	}
 
 	public final void teleopPeriodic() {
-		Scheduler.getInstance().run();
+		if(executeInTele) Scheduler.getInstance().run();
 
 		//Handles all Arachne drivetrains.
 		for(CtrlDrivetrain drive : CtrlDrivetrain.drivetrains) drive.passControllerOutputs();
@@ -95,12 +98,16 @@ public abstract class ArachneRobot extends IterativeRobot
 	}
 
 	public final void disabledInit() {
+		if(interruptAtDisable) Scheduler.getInstance().removeAll();
+		
 		for(RobotExtender extension : RobotAPI.getExtensions(Order.PRE)) extension.initialiseDisabled();
 		initialiseDisabled();
 		for(RobotExtender extension : RobotAPI.getExtensions(Order.POST)) extension.initialiseDisabled();
 	}
 
 	public final void disabledPeriodic() {
+		if(executeInDisable) Scheduler.getInstance().run();
+		
 		for(RobotExtender extension : RobotAPI.getExtensions(Order.PRE)) extension.executeDisabled();
 		executeDisabled();
 		for(RobotExtender extension : RobotAPI.getExtensions(Order.POST)) extension.executeDisabled();
