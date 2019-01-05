@@ -33,8 +33,8 @@ public class AcTankTurn extends Action
 	 * 
 	 * @param heading The desired heading.
 	 */
-	public AcTankTurn(double angleTarget) {
-		this(angleTarget, 1);
+	public AcTankTurn(double heading) {
+		this(heading, 1);
 	}
 	
 	public void onStart() {
