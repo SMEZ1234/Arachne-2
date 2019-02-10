@@ -1,6 +1,7 @@
 package redbacks.arachne.lib.actions;
 
 import java.util.function.BooleanSupplier;
+import java.util.function.Consumer;
 
 import redbacks.arachne.lib.checks.Check;
 
@@ -14,28 +15,28 @@ import redbacks.arachne.lib.checks.Check;
  */
 public class AcLambda extends Action
 {
-	Runnable onStart, onRun, onFinish;
+	Consumer<Action> onStart, onRun, onFinish;
 	BooleanSupplier isDone;
 	
 	/**
 	 * Constructor for an action whose functionality is fully defined by functional interfaces.
 	 * 
 	 * @param check The condition that will finish the action.
-	 * @param onRun A function to run repeatedly while the action runs. The function takes no input and returns no output.
+	 * @param onRun A function to run repeatedly while the action runs. The function takes this action as input and returns no output.
 	 */
-	public AcLambda(Check check, Runnable onRun) {
-		this(check, () -> {}, onRun, () -> {}, () -> false);
+	public AcLambda(Check check, Consumer<Action> onRun) {
+		this(check, action -> {}, onRun, action -> {}, () -> false);
 	}
 	
 	/**
 	 * Constructor for an action whose functionality is fully defined by functional interfaces.
 	 * 
 	 * @param check The condition that will finish the action.
-	 * @param onStart A function to run when the action starts. The function takes no input and returns no output.
-	 * @param onRun A function to run repeatedly while the action runs. The function takes no input and returns no output.
-	 * @param onFinish A function to run when the action finishes. The function takes no input and returns no output.
+	 * @param onStart A function to run when the action starts. The function takes this action as input and returns no output.
+	 * @param onRun A function to run repeatedly while the action runs. The function takes this action as input and returns no output.
+	 * @param onFinish A function to run when the action finishes. The function takes this action as input and returns no output.
 	 */
-	public AcLambda(Check check, Runnable onStart, Runnable onRun, Runnable onFinish) {
+	public AcLambda(Check check, Consumer<Action> onStart, Consumer<Action> onRun, Consumer<Action> onFinish) {
 		this(check, onStart, onRun, onFinish, () -> false);
 	}
 	
@@ -43,12 +44,12 @@ public class AcLambda extends Action
 	 * Constructor for an action whose functionality is fully defined by functional interfaces.
 	 * 
 	 * @param check The condition that will finish the action.
-	 * @param onStart A function to run when the action starts. The function takes no input and returns no output.
-	 * @param onRun A function to run repeatedly while the action runs. The function takes no input and returns no output.
-	 * @param onFinish A function to run when the action finishes. The function takes no input and returns no output.
+	 * @param onStart A function to run when the action starts. The function takes this action as input and returns no output.
+	 * @param onRun A function to run repeatedly while the action runs. The function takes this action as input and returns no output.
+	 * @param onFinish A function to run when the action finishes. The function takes this action as input and returns no output.
 	 * @param isDone A function to determine whether the action should stop running. The function takes no input and returns a boolean output.
 	 */
-	public AcLambda(Check check, Runnable onStart, Runnable onRun, Runnable onFinish, BooleanSupplier isDone) {
+	public AcLambda(Check check, Consumer<Action> onStart, Consumer<Action> onRun, Consumer<Action> onFinish, BooleanSupplier isDone) {
 		super(check);
 		this.onStart = onStart;
 		this.onRun = onRun;
@@ -57,15 +58,15 @@ public class AcLambda extends Action
 	}
 	
 	public void onStart() {
-		onStart.run();
+		onStart.accept(this);
 	}
 	
 	public void onRun() {
-		onRun.run();
+		onRun.accept(this);
 	}
 	
 	public void onFinish() {
-		onFinish.run();
+		onFinish.accept(this);
 	}
 	
 	public boolean isDone() {
