@@ -47,8 +47,6 @@ public class CtrlMecanumDrivetrain extends MecanumDrive
 		((CtrlDrive) m_rearLeftMotor).controller.set(m_rearLeftMotor.get() * m_maxOutput);
 		((CtrlDrive) m_rearRightMotor).controller.set(m_rearRightMotor.get() * m_maxOutput);
 
-		if(ArachneRobot.isIndivDriveControl) {
-			if(m_safetyHelper != null) m_safetyHelper.feed();
-		}
+		if(ArachneRobot.isIndivDriveControl) feed();
 	}
 }

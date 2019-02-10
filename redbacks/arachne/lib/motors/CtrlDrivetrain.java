@@ -39,8 +39,6 @@ public class CtrlDrivetrain extends DifferentialDrive
 		((CtrlDrive) m_leftMotor).controller.set(m_leftMotor.get() * m_maxOutput);
 		((CtrlDrive) m_rightMotor).controller.set(m_rightMotor.get() * m_maxOutput);
 
-		if(ArachneRobot.isIndivDriveControl) {
-			if(m_safetyHelper != null) m_safetyHelper.feed();
-		}
+		if(ArachneRobot.isIndivDriveControl) feed();
 	}
 }
