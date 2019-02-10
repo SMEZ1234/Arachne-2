@@ -9,7 +9,7 @@ import redbacks.arachne.lib.motors.CtrlMecanumDrivetrain;
 
 import java.util.ArrayList;
 
-import edu.wpi.first.wpilibj.IterativeRobot;
+import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -19,7 +19,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  * 
  * @author Sean Zammit
  */
-public abstract class ArachneRobot extends IterativeRobot
+public abstract class ArachneRobot extends TimedRobot
 {
 	public static boolean isAuto, isIndivDriveControl = false;
 
