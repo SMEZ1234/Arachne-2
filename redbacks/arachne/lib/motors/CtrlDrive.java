@@ -38,7 +38,7 @@ public class CtrlDrive extends CtrlMotor implements SpeedController
 	 * Don't call this. Required SpeedController method.
 	 */
 	public void pidWrite(double output) {
-		controller.pidWrite(output);
+		set(output);
 	}
 
 	/**
