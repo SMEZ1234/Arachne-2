@@ -84,7 +84,11 @@ public class CommandBase extends Command
 	}
 
 	protected void execute() {
-		if(actionSeq.size() > actionPos) {
+		boolean executeAgain = true;
+		
+		while(actionSeq.size() > actionPos && executeAgain) {
+			executeAgain = false;
+			
 			Action action = actionSeq.get(actionPos);
 
 			if(!action.isRunning) action.initialise(this);
@@ -93,6 +97,7 @@ public class CommandBase extends Command
 			if(action.isFinished() || (action.check instanceof ChQueue && actionSeq.size() > actionPos + 1)) {
 				action.end();
 				actionPos++;
+				executeAgain = true;
 			}
 
 			if(action.isInterrupted) this.cancel();
